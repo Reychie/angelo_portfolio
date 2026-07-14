@@ -23,7 +23,7 @@ export default function ContactSection() {
   return (
     <section className="relative py-24 px-6 overflow-hidden" style={{ background: 'linear-gradient(180deg, #060d1f 0%, #0a0f1e 60%, #0d1423 100%)' }}>
       {/* ===== UNIQUE BG — radial burst + gold border frame ===== */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         {/* Central radial glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full opacity-8 blur-3xl" style={{ background: 'radial-gradient(circle, rgba(30,64,175,0.3), transparent 70%)' }} />
         {/* Gold corner frames */}
@@ -49,7 +49,7 @@ export default function ContactSection() {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-5xl mx-auto">
+      <div className="relative max-w-5xl mx-auto" style={{ zIndex: 1 }}>
         {/* Heading */}
         <div className="text-center mb-16 animate-fadeInUp">
           <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#d4af37' }}>Say Hello</p>

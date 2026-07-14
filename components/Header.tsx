@@ -36,7 +36,7 @@ export default function Header({ isDark, toggleDarkMode }: HeaderProps) {
               onClick={() => handleNavClick('#home')}
               className="relative group text-xl md:text-2xl font-black bg-gradient-to-r from-primary-light via-accent to-accent-light bg-clip-text text-transparent hover:from-accent hover:via-primary-light hover:to-accent-light transition-all duration-300 hover-scale cursor-pointer"
             >
-              Angelo Reychie
+              Angelo Reychie Alejo
               <span className="absolute -bottom-2 left-0 h-0.5 bg-gradient-to-r from-primary-light to-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ width: '100%' }} />
             </Link>
           </div>

@@ -18,7 +18,7 @@ export default function SkillsSection() {
   return (
     <section className="relative py-24 px-6 overflow-hidden" style={{ background: 'linear-gradient(180deg, #0a0f1e 0%, #0e1a35 50%, #0d1b3e 100%)' }}>
       {/* ===== UNIQUE BG — hexagon/circuit pattern ===== */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         {/* Animated vertical lines */}
         {[...Array(6)].map((_, i) => (
           <div key={i} className="absolute top-0 bottom-0 w-px opacity-5 animate-pulse" style={{
@@ -35,7 +35,7 @@ export default function SkillsSection() {
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-40 opacity-10 blur-3xl" style={{ background: 'radial-gradient(ellipse, #d4af37, transparent 70%)' }} />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative max-w-6xl mx-auto" style={{ zIndex: 1 }}>
         {/* Heading */}
         <div className="text-center mb-16 animate-fadeInUp">
           <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#d4af37' }}>What I Know</p>

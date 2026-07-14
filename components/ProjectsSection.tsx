@@ -1,19 +1,18 @@
 'use client';
 
-const projects = [
-  { id: 1, title: 'E-Commerce Platform', description: 'Full-featured platform with payment integration, inventory management, and real-time notifications.', icon: '🛍', technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'], link: '#' },
-  { id: 2, title: 'Social Media Dashboard', description: 'Analytics dashboard for multiple social accounts with real-time data visualization.', icon: '📊', technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Chart.js'], link: '#' },
-  { id: 3, title: 'Project Management Tool', description: 'Collaborative tool with team features, task tracking, and reporting capabilities.', icon: '📋', technologies: ['React', 'Firebase', 'Tailwind CSS', 'Redux'], link: '#' },
-  { id: 4, title: 'AI Content Generator', description: 'AI-powered platform using machine learning to create personalized content at scale.', icon: '🤖', technologies: ['Next.js', 'OpenAI API', 'Prisma', 'Stripe'], link: '#' },
-  { id: 5, title: 'Mobile Fitness App', description: 'Cross-platform fitness tracking with workout plans, progress tracking, and community.', icon: '💪', technologies: ['React Native', 'Firebase', 'Redux', 'Google Fit'], link: '#' },
-  { id: 6, title: 'Learning Management System', description: 'Comprehensive LMS for online courses with video streaming, quizzes, and progress.', icon: '📚', technologies: ['Next.js', 'Node.js', 'PostgreSQL', 'WebSocket'], link: '#' },
-];
+import { useRouter } from 'next/navigation';
+import { projects, FEATURED_COUNT } from '@/lib/projects-data';
+
+const featured = projects.slice(0, FEATURED_COUNT);
+const hasMoreThanFeatured = projects.length > FEATURED_COUNT;
 
 export default function ProjectsSection() {
+  const router = useRouter();
+
   return (
     <section className="relative py-24 px-6 overflow-hidden" style={{ background: 'linear-gradient(170deg, #0d1b3e 0%, #0a0f1e 50%, #111827 100%)' }}>
       {/* ===== UNIQUE BG — scattered particles + gold frame corners ===== */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         {/* Particle dots scattered */}
         {[
           { top: '10%', left: '5%', size: 3, color: '#d4af37', delay: '0s' },
@@ -37,7 +36,7 @@ export default function ProjectsSection() {
         ))}
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative max-w-6xl mx-auto" style={{ zIndex: 1 }}>
         {/* Heading */}
         <div className="text-center mb-16 animate-fadeInUp">
           <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#d4af37' }}>My Work</p>
@@ -56,7 +55,7 @@ export default function ProjectsSection() {
 
         {/* Project cards grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projects.map((project, index) => (
+          {featured.map((project, index) => (
             <a
               key={project.id}
               href={project.link}
@@ -102,15 +101,44 @@ export default function ProjectsSection() {
           ))}
         </div>
 
-        {/* CTA */}
+        {/* View All Projects — enabled only when total projects > FEATURED_COUNT */}
         <div className="text-center mt-12 animate-fadeInUp">
-          <a href="#" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm hover-lift transition-all duration-300"
-            style={{ background: 'linear-gradient(135deg, #1e40af, #3b82f6)', color: '#ffffff' }}>
+          <button
+            onClick={() => hasMoreThanFeatured && router.push('/projects')}
+            disabled={!hasMoreThanFeatured}
+            aria-disabled={!hasMoreThanFeatured}
+            title={
+              hasMoreThanFeatured
+                ? 'View all projects'
+                : `All ${projects.length} projects are shown above — add more to enable this button`
+            }
+            className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm transition-all duration-300"
+            style={
+              hasMoreThanFeatured
+                ? {
+                    background: 'linear-gradient(135deg, #1e40af, #3b82f6)',
+                    color: '#ffffff',
+                    cursor: 'pointer',
+                    boxShadow: '0 4px 20px rgba(59,130,246,0.3)',
+                  }
+                : {
+                    background: 'rgba(30,64,175,0.15)',
+                    color: 'rgba(255,255,255,0.3)',
+                    cursor: 'not-allowed',
+                    border: '1px solid rgba(59,130,246,0.15)',
+                  }
+            }
+          >
             View All Projects
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
             </svg>
-          </a>
+          </button>
+          {!hasMoreThanFeatured && (
+            <p className="mt-2 text-xs" style={{ color: '#334155' }}>
+              Add more than {FEATURED_COUNT} projects to enable this button
+            </p>
+          )}
         </div>
       </div>
     </section>

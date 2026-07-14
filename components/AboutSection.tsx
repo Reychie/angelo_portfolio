@@ -4,7 +4,7 @@ export default function AboutSection() {
   return (
     <section className="relative py-24 px-6 overflow-hidden" style={{ background: 'linear-gradient(160deg, #0f172a 0%, #1a2d5a 50%, #0f172a 100%)' }}>
       {/* ===== ANIMATED BG DESIGN — diagonal gold lines + dots ===== */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         {/* Dot grid */}
         <div className="absolute inset-0 opacity-10" style={{
           backgroundImage: 'radial-gradient(circle, #d4af37 1px, transparent 1px)',
@@ -20,7 +20,7 @@ export default function AboutSection() {
         <div className="absolute top-1/2 left-0 right-0 h-px opacity-10" style={{ background: 'linear-gradient(90deg, transparent, #d4af37, transparent)' }} />
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto">
+      <div className="relative max-w-6xl mx-auto" style={{ zIndex: 1 }}>
         {/* Section heading */}
         <div className="text-center mb-16 animate-fadeInUp">
           <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#d4af37' }}>Who I Am</p>

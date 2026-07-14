@@ -47,7 +47,7 @@ export default function ExperienceSection() {
   return (
     <section className="relative py-24 px-6 overflow-hidden" style={{ background: 'linear-gradient(135deg, #060d1f 0%, #0d1b3e 40%, #111827 100%)' }}>
       {/* ===== UNIQUE BG — timeline flow / wave pattern ===== */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         {/* Concentric rings */}
         {[300, 450, 600].map((size, i) => (
           <div key={i} className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border opacity-5 animate-pulse" style={{
@@ -65,7 +65,7 @@ export default function ExperienceSection() {
         <div className="absolute right-0 top-1/4 w-48 h-96 opacity-10 blur-3xl" style={{ background: 'radial-gradient(ellipse, #d4af37, transparent 70%)' }} />
       </div>
 
-      <div className="relative z-10 max-w-4xl mx-auto">
+      <div className="relative max-w-4xl mx-auto" style={{ zIndex: 1 }}>
         {/* Heading */}
         <div className="text-center mb-16 animate-fadeInUp">
           <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#d4af37' }}>My Journey</p>
