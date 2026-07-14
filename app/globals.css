@@ -24,7 +24,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0f172a;
+    --background: #0a0f1e;
     --foreground: #f8fafc;
     --primary: #3b82f6;
     --primary-light: #60a5fa;
@@ -43,6 +43,34 @@
     --neutral-800: #f1f5f9;
     --neutral-900: #f8fafc;
   }
+}
+
+/* Class-based dark mode (toggled by JS) */
+.dark {
+  --background: #0a0f1e;
+  --foreground: #f8fafc;
+  --primary: #3b82f6;
+  --primary-light: #60a5fa;
+  --primary-dark: #1e40af;
+  --accent: #d4af37;
+  --accent-light: #ffd700;
+  --accent-dark: #b8860b;
+  --neutral-50: #0f172a;
+  --neutral-100: #1e293b;
+  --neutral-200: #334155;
+  --neutral-300: #475569;
+  --neutral-400: #64748b;
+  --neutral-500: #94a3b8;
+  --neutral-600: #cbd5e1;
+  --neutral-700: #e2e8f0;
+  --neutral-800: #f1f5f9;
+  --neutral-900: #f8fafc;
+}
+
+/* Light mode explicit (when .dark is removed) */
+:root:not(.dark) {
+  --background: #fafbfc;
+  --foreground: #0f172a;
 }
 
 @theme inline {

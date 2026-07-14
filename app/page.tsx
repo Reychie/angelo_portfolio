@@ -43,11 +43,11 @@ export default function Home() {
   };
 
   return (
-    <div className={`${isDark ? 'dark' : ''}`}>
+    <>
       <CustomCursor showCursor={showCursor} />
       <Header isDark={isDark} toggleDarkMode={toggleDarkMode} />
       
-      <main className="bg-background text-foreground transition-colors duration-300">
+      <main>
         <section id="home">
           <HeroSection />
         </section>
@@ -73,9 +73,11 @@ export default function Home() {
         </section>
       </main>
       
-      <footer className="bg-neutral-900 dark:bg-neutral-50 text-neutral-50 dark:text-neutral-900 py-8 text-center border-t border-neutral-200 dark:border-neutral-800">
-        <p className="text-sm">© 2024 Your Portfolio. Crafted with care and code.</p>
+      <footer className="py-8 text-center border-t" style={{ background: '#060d1f', borderColor: 'rgba(59,130,246,0.15)' }}>
+        <p className="text-sm font-medium" style={{ color: '#475569' }}>
+          &copy; 2024 <span style={{ color: '#d4af37' }}>Angelo Reychie</span>. Crafted with care and code.
+        </p>
       </footer>
-    </div>
+    </>
   );
 }

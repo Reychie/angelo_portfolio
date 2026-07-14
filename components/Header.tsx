@@ -34,10 +34,10 @@ export default function Header({ isDark, toggleDarkMode }: HeaderProps) {
             <Link 
               href="#home"
               onClick={() => handleNavClick('#home')}
-              className="relative group text-2xl md:text-3xl font-black bg-gradient-to-r from-primary via-primary-light to-accent bg-clip-text text-transparent hover:from-primary-light hover:to-accent-light transition-all duration-300 hover-scale cursor-pointer"
+              className="relative group text-xl md:text-2xl font-black bg-gradient-to-r from-primary-light via-accent to-accent-light bg-clip-text text-transparent hover:from-accent hover:via-primary-light hover:to-accent-light transition-all duration-300 hover-scale cursor-pointer"
             >
-              {'<Dev />'}
-              <span className="absolute -bottom-2 left-0 h-1 bg-gradient-to-r from-primary to-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ width: '100%' }} />
+              Angelo Reychie
+              <span className="absolute -bottom-2 left-0 h-0.5 bg-gradient-to-r from-primary-light to-accent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ width: '100%' }} />
             </Link>
           </div>
 
@@ -50,8 +50,8 @@ export default function Header({ isDark, toggleDarkMode }: HeaderProps) {
                 onClick={() => handleNavClick(link.href)}
                 className={`relative px-4 py-2 text-sm font-semibold transition-all duration-300 group ${
                   activeLink === link.href.replace('#', '')
-                    ? 'text-primary dark:text-primary-light'
-                    : 'text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary-light'
+                    ? 'text-accent dark:text-accent'
+                    : 'text-white hover:text-accent dark:text-white dark:hover:text-accent'
                 }`}
               >
                 {link.label}
@@ -102,8 +102,8 @@ export default function Header({ isDark, toggleDarkMode }: HeaderProps) {
                       onClick={() => handleNavClick(link.href)}
                       className={`block px-4 py-3 text-sm font-semibold transition-all duration-300 ${
                         activeLink === link.href.replace('#', '')
-                          ? 'bg-primary/10 dark:bg-primary-light/10 text-primary dark:text-primary-light border-l-2 border-primary dark:border-primary-light'
-                          : 'text-neutral-700 dark:text-neutral-300 hover:bg-neutral-100/50 dark:hover:bg-neutral-900/50 hover:text-primary dark:hover:text-primary-light'
+                          ? 'bg-accent/20 text-accent border-l-2 border-accent'
+                          : 'text-white hover:bg-primary/20 hover:text-accent'
                       }`}
                     >
                       {link.label}
