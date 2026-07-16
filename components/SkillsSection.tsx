@@ -16,33 +16,99 @@ export default function SkillsSection() {
   ];
 
   return (
-    <section className="relative py-24 px-6 overflow-hidden" style={{ background: 'linear-gradient(180deg, #0a0f1e 0%, #0e1a35 50%, #0d1b3e 100%)' }}>
-      {/* ===== UNIQUE BG — hexagon/circuit pattern ===== */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+    <section
+      className="relative py-24 px-6 overflow-hidden"
+      style={{
+        background: 'linear-gradient(180deg, #0a0f1e 0%, #0e1a35 50%, #0d1b3e 100%)',
+        isolation: 'isolate',
+      }}
+    >
+      {/* ═══ BACKGROUND LAYER — must be first in DOM and z-index: 0 ═══ */}
+      <div
+        aria-hidden="true"
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 0,
+          pointerEvents: 'none',
+          overflow: 'hidden',
+        }}
+      >
         {/* Animated vertical lines */}
         {[...Array(6)].map((_, i) => (
-          <div key={i} className="absolute top-0 bottom-0 w-px opacity-5 animate-pulse" style={{
-            left: `${(i + 1) * 14}%`,
-            background: i % 2 === 0 ? 'linear-gradient(to bottom, transparent, #d4af37, transparent)' : 'linear-gradient(to bottom, transparent, #3b82f6, transparent)',
-            animationDelay: `${i * 0.4}s`,
-            animationDuration: '3s',
-          }} />
+          <div
+            key={i}
+            className="animate-pulse"
+            style={{
+              position: 'absolute',
+              top: 0,
+              bottom: 0,
+              left: `${(i + 1) * 14}%`,
+              width: '1px',
+              opacity: 0.05,
+              background: i % 2 === 0
+                ? 'linear-gradient(to bottom, transparent, #d4af37, transparent)'
+                : 'linear-gradient(to bottom, transparent, #3b82f6, transparent)',
+              animationDelay: `${i * 0.4}s`,
+              animationDuration: '3s',
+            }}
+          />
         ))}
-        {/* Floating gold diamond accents */}
-        <div className="absolute top-16 right-16 w-12 h-12 border-2 opacity-15 animate-rotate-slow" style={{ borderColor: '#d4af37', transform: 'rotate(45deg)', animationDuration: '12s' }} />
-        <div className="absolute bottom-16 left-16 w-8 h-8 border opacity-15 animate-rotate-slow" style={{ borderColor: '#3b82f6', transform: 'rotate(45deg)', animationDuration: '8s', animationDirection: 'reverse' }} />
+        {/* Floating diamond border accents */}
+        <div
+          className="animate-pulse"
+          style={{
+            position: 'absolute',
+            top: '4rem',
+            right: '4rem',
+            width: '3rem',
+            height: '3rem',
+            border: '2px solid #d4af37',
+            opacity: 0.15,
+            transform: 'rotate(45deg)',
+            animationDuration: '12s',
+          }}
+        />
+        <div
+          className="animate-pulse"
+          style={{
+            position: 'absolute',
+            bottom: '4rem',
+            left: '4rem',
+            width: '2rem',
+            height: '2rem',
+            border: '1px solid #3b82f6',
+            opacity: 0.15,
+            transform: 'rotate(45deg)',
+            animationDuration: '8s',
+          }}
+        />
         {/* Large glow bottom */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-40 opacity-10 blur-3xl" style={{ background: 'radial-gradient(ellipse, #d4af37, transparent 70%)' }} />
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '66%',
+          height: '10rem',
+          opacity: 0.1,
+          filter: 'blur(48px)',
+          background: 'radial-gradient(ellipse, #d4af37, transparent 70%)',
+        }} />
       </div>
 
-      <div className="relative max-w-6xl mx-auto" style={{ zIndex: 1 }}>
+      {/* ═══ CONTENT LAYER — always above background ═══ */}
+      <div
+        className="max-w-6xl mx-auto"
+        style={{ position: 'relative', zIndex: 1 }}
+      >
         {/* Heading */}
         <div className="text-center mb-16 animate-fadeInUp">
           <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#d4af37' }}>What I Know</p>
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
             Skills &amp; <span style={{ color: '#d4af37' }}>Expertise</span>
           </h2>
-          <p className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: '#94a3b8' }}>
+          <p className="text-base md:text-lg max-w-2xl mx-auto" style={{ color: '#ffffff' }}>
             A comprehensive toolkit built through years of hands-on experience and continuous learning
           </p>
           <div className="flex items-center justify-center gap-3 mt-4">
@@ -55,13 +121,22 @@ export default function SkillsSection() {
         {/* Skill category cards */}
         <div className="grid md:grid-cols-2 gap-6 mb-16">
           {skillCategories.map((cat, i) => (
-            <div key={cat.category} className="group p-6 rounded-2xl border hover-lift transition-all duration-300 animate-fadeInUp" style={{
-              background: 'rgba(30,64,175,0.08)',
-              borderColor: 'rgba(59,130,246,0.2)',
-              animationDelay: `${i * 100}ms`,
-            }}
-              onMouseEnter={e => { (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(212,175,55,0.5)'; (e.currentTarget as HTMLDivElement).style.background = 'rgba(212,175,55,0.05)'; }}
-              onMouseLeave={e => { (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(59,130,246,0.2)'; (e.currentTarget as HTMLDivElement).style.background = 'rgba(30,64,175,0.08)'; }}
+            <div
+              key={cat.category}
+              className="group p-6 rounded-2xl border hover-lift transition-all duration-300 animate-fadeInUp"
+              style={{
+                background: 'rgba(30,64,175,0.08)',
+                borderColor: 'rgba(59,130,246,0.2)',
+                animationDelay: `${i * 100}ms`,
+              }}
+              onMouseEnter={e => {
+                (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(212,175,55,0.5)';
+                (e.currentTarget as HTMLDivElement).style.background = 'rgba(212,175,55,0.05)';
+              }}
+              onMouseLeave={e => {
+                (e.currentTarget as HTMLDivElement).style.borderColor = 'rgba(59,130,246,0.2)';
+                (e.currentTarget as HTMLDivElement).style.background = 'rgba(30,64,175,0.08)';
+              }}
             >
               <div className="flex items-center gap-3 mb-4">
                 <span className="text-2xl" style={{ color: '#d4af37' }}>{cat.icon}</span>
@@ -69,7 +144,15 @@ export default function SkillsSection() {
               </div>
               <div className="flex flex-wrap gap-2">
                 {cat.skills.map((skill) => (
-                  <span key={skill} className="px-3 py-1.5 rounded-full text-sm font-semibold border hover-scale cursor-default transition-all duration-200" style={{ background: 'rgba(30,64,175,0.2)', borderColor: 'rgba(59,130,246,0.3)', color: '#93c5fd' }}>
+                  <span
+                    key={skill}
+                    className="px-3 py-1.5 rounded-full text-sm font-semibold border hover-scale cursor-default transition-all duration-200"
+                    style={{
+                      background: 'rgba(30,64,175,0.2)',
+                      borderColor: 'rgba(59,130,246,0.3)',
+                      color: '#93c5fd',
+                    }}
+                  >
                     {skill}
                   </span>
                 ))}
@@ -88,10 +171,13 @@ export default function SkillsSection() {
                 <span className="text-sm font-bold" style={{ color: item.color }}>{item.pct}%</span>
               </div>
               <div className="h-2.5 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
-                <div className="h-full rounded-full transition-all duration-1000 ease-out animate-shimmer" style={{
-                  width: `${item.pct}%`,
-                  background: `linear-gradient(90deg, #1e40af, ${item.color})`,
-                }} />
+                <div
+                  className="h-full rounded-full transition-all duration-1000 ease-out animate-shimmer"
+                  style={{
+                    width: `${item.pct}%`,
+                    background: `linear-gradient(90deg, #1e40af, ${item.color})`,
+                  }}
+                />
               </div>
             </div>
           ))}

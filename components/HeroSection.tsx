@@ -14,9 +14,9 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a0f1e 0%, #0d1b3e 40%, #0a1628 70%, #0f172a 100%)' }}>
+    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a0f1e 0%, #0d1b3e 40%, #0a1628 70%, #0f172a 100%)', isolation: 'isolate' }}>
       {/* ===== ANIMATED BACKGROUND DESIGN ===== */}
-      <div className="absolute inset-0 -z-0 overflow-hidden pointer-events-none">
+      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden', pointerEvents: 'none' }}>
         {/* Grid pattern */}
         <div className="absolute inset-0" style={{
           backgroundImage: 'linear-gradient(rgba(30,64,175,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(30,64,175,0.08) 1px, transparent 1px)',
@@ -41,7 +41,7 @@ export default function HeroSection() {
       </div>
 
       {/* ===== MAIN TWO-COLUMN LAYOUT ===== */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-24 pb-16">
+      <div className="w-full max-w-7xl mx-auto px-6 md:px-12 lg:px-16 pt-24 pb-16" style={{ position: 'relative', zIndex: 1 }}>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
 
           {/* ===== LEFT COLUMN — PHOTO ===== */}
