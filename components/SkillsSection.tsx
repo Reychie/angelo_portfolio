@@ -8,13 +8,6 @@ export default function SkillsSection() {
     { category: 'Design', icon: '◬', skills: ['Figma', 'UI/UX Design', 'Responsive Design', 'Accessibility', 'Animation'] },
   ];
 
-  const proficiencies = [
-    { skill: 'Frontend Development', pct: 95, color: '#3b82f6' },
-    { skill: 'Full-Stack Development', pct: 85, color: '#d4af37' },
-    { skill: 'UI/UX Design', pct: 80, color: '#60a5fa' },
-    { skill: 'Backend Development', pct: 90, color: '#d4af37' },
-  ];
-
   return (
     <section
       className="relative py-24 px-6 overflow-hidden"
@@ -156,28 +149,6 @@ export default function SkillsSection() {
                     {skill}
                   </span>
                 ))}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* Proficiency bars */}
-        <div className="space-y-6 animate-fadeInUp">
-          <h3 className="text-2xl font-bold text-white mb-6 text-center">Proficiency Levels</h3>
-          {proficiencies.map((item) => (
-            <div key={item.skill} className="space-y-2">
-              <div className="flex justify-between items-center">
-                <span className="text-sm md:text-base font-semibold text-white">{item.skill}</span>
-                <span className="text-sm font-bold" style={{ color: item.color }}>{item.pct}%</span>
-              </div>
-              <div className="h-2.5 rounded-full overflow-hidden" style={{ background: 'rgba(255,255,255,0.06)' }}>
-                <div
-                  className="h-full rounded-full transition-all duration-1000 ease-out animate-shimmer"
-                  style={{
-                    width: `${item.pct}%`,
-                    background: `linear-gradient(90deg, #1e40af, ${item.color})`,
-                  }}
-                />
               </div>
             </div>
           ))}
