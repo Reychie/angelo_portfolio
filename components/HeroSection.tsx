@@ -154,7 +154,28 @@ export default function HeroSection() {
             </div>
 
             {/* Social Links */}
-            <div className="flex gap-4 pt-2">
+            <div className="flex flex-wrap items-center gap-4 pt-2">
+              <a
+                href="/resume.pdf"
+                download
+                className="group relative inline-flex items-center gap-2 px-5 h-12 rounded-xl border font-bold text-sm transition-all duration-300 hover-scale overflow-hidden"
+                style={{ borderColor: 'rgba(212,175,55,0.4)', background: 'rgba(212,175,55,0.1)', color: '#ffffff' }}
+                onMouseEnter={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.background = '#d4af37';
+                  (e.currentTarget as HTMLAnchorElement).style.color = '#0a0f1e';
+                }}
+                onMouseLeave={e => {
+                  (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(212,175,55,0.1)';
+                  (e.currentTarget as HTMLAnchorElement).style.color = '#ffffff';
+                }}
+                aria-label="Download CV"
+              >
+                <svg className="w-5 h-5 relative z-10 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                </svg>
+                <span className="relative z-10">Download CV</span>
+              </a>
+
               <a href="https://github.com" target="_blank" rel="noopener noreferrer"
                 className="group relative w-12 h-12 flex items-center justify-center rounded-xl border transition-all duration-300 hover-scale overflow-hidden"
                 style={{ borderColor: 'rgba(59,130,246,0.4)', background: 'rgba(30,64,175,0.2)', color: '#ffffff' }}
