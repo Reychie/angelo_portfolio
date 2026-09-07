@@ -11,7 +11,7 @@ export default function ProjectsSection() {
 
   return (
     <section
-      className="relative py-24 px-6 overflow-hidden"
+      className="relative min-h-full py-24 px-6 overflow-hidden"
       style={{
         background: 'linear-gradient(170deg, #0d1b3e 0%, #0a0f1e 50%, #111827 100%)',
         isolation: 'isolate',

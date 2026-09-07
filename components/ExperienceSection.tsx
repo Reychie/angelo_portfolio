@@ -46,7 +46,7 @@ export default function ExperienceSection() {
 
   return (
     <section
-      className="relative py-24 px-6 overflow-hidden"
+      className="relative min-h-full py-24 px-6 overflow-hidden"
       style={{
         background: 'linear-gradient(135deg, #060d1f 0%, #0d1b3e 40%, #111827 100%)',
         isolation: 'isolate',

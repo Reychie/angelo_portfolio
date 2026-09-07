@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import Header from '@/components/Header';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
@@ -8,44 +10,38 @@ import ExperienceSection from '@/components/ExperienceSection';
 import ProjectsSection from '@/components/ProjectsSection';
 import ContactSection from '@/components/ContactSection';
 import CustomCursor from '@/components/CustomCursor';
+import Footer from '@/components/Footer';
+import type { Section } from '@/lib/types';
 
 export default function Home() {
+  const [activeSection, setActiveSection] = useState<Section>('home');
+
   return (
     <>
       <CustomCursor showCursor={true} />
-      <Header />
 
-      <main>
-        <section id="home">
-          <HeroSection />
-        </section>
+      <Header activeSection={activeSection} onSectionChange={setActiveSection} />
 
-        <section id="about">
-          <AboutSection />
-        </section>
+      <main className="fixed inset-x-0 bottom-0 top-20 overflow-hidden">
+        <div key={activeSection} className="h-full w-full overflow-y-auto animate-page-enter">
+          {activeSection === 'home' && <HeroSection onNavigate={setActiveSection} />}
 
-        <section id="skills">
-          <SkillsSection />
-        </section>
+          {activeSection === 'about' && <AboutSection onNavigate={setActiveSection} />}
 
-        <section id="experience">
-          <ExperienceSection />
-        </section>
+          {activeSection === 'skills' && <SkillsSection />}
 
-        <section id="projects">
-          <ProjectsSection />
-        </section>
+          {activeSection === 'experience' && <ExperienceSection />}
 
-        <section id="contact">
-          <ContactSection />
-        </section>
+          {activeSection === 'projects' && <ProjectsSection />}
+
+          {activeSection === 'contact' && (
+            <>
+              <ContactSection />
+              <Footer />
+            </>
+          )}
+        </div>
       </main>
-
-      <footer className="py-8 text-center border-t" style={{ background: '#060d1f', borderColor: 'rgba(59,130,246,0.15)' }}>
-        <p className="text-sm font-medium" style={{ color: '#ffffff' }}>
-          &copy; 2026 <span style={{ color: '#d4af37' }}>Angelo Reychie Alejo</span>. Crafted with care and code.
-        </p>
-      </footer>
     </>
   );
 }
