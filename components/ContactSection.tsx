@@ -22,7 +22,7 @@ export default function ContactSection() {
 
   return (
     <section
-      className="relative py-24 px-6 overflow-hidden"
+      className="relative min-h-full py-24 px-6 overflow-hidden"
       style={{
         background: 'linear-gradient(180deg, #060d1f 0%, #0a0f1e 60%, #0d1423 100%)',
         isolation: 'isolate',

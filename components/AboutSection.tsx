@@ -1,9 +1,15 @@
 'use client';
 
-export default function AboutSection() {
+import type { Section } from '@/lib/types';
+
+interface AboutSectionProps {
+  onNavigate?: (section: Section) => void;
+}
+
+export default function AboutSection({ onNavigate }: AboutSectionProps) {
   return (
     <section
-      className="relative py-24 px-6 overflow-hidden"
+      className="relative min-h-full py-24 px-6 overflow-hidden"
       style={{
         background: 'linear-gradient(160deg, #0f172a 0%, #1a2d5a 50%, #0f172a 100%)',
         isolation: 'isolate',
@@ -169,8 +175,9 @@ export default function AboutSection() {
               ))}
             </div>
 
-            <a
-              href="#contact"
+            <button
+              type="button"
+              onClick={() => onNavigate?.('contact')}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-bold text-sm hover-scale transition-all duration-300"
               style={{ background: 'linear-gradient(135deg, #1e40af, #3b82f6)', color: '#ffffff' }}
             >
@@ -178,7 +185,7 @@ export default function AboutSection() {
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
               </svg>
-            </a>
+            </button>
           </div>
         </div>
       </div>

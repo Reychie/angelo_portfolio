@@ -1,20 +1,21 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import type { Section } from '@/lib/types';
 
-export default function HeroSection() {
-  const [scrollY, setScrollY] = useState(0);
+interface HeroSectionProps {
+  onNavigate?: (section: Section) => void;
+}
+
+export default function HeroSection({ onNavigate }: HeroSectionProps) {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a0f1e 0%, #0d1b3e 40%, #0a1628 70%, #0f172a 100%)', isolation: 'isolate' }}>
+    <section className="relative min-h-full flex items-center overflow-hidden" style={{ background: 'linear-gradient(135deg, #0a0f1e 0%, #0d1b3e 40%, #0a1628 70%, #0f172a 100%)', isolation: 'isolate' }}>
       {/* ===== ANIMATED BACKGROUND DESIGN ===== */}
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, zIndex: 0, overflow: 'hidden', pointerEvents: 'none' }}>
         {/* Grid pattern */}
@@ -119,8 +120,9 @@ export default function HeroSection() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
-              <a
-                href="#projects"
+              <button
+                type="button"
+                onClick={() => onNavigate?.('projects')}
                 className="group relative inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-base rounded-xl overflow-hidden shadow-lg hover-lift transition-all duration-300"
                 style={{ background: 'linear-gradient(135deg, #1e40af, #3b82f6)', color: '#ffffff' }}
               >
@@ -131,51 +133,31 @@ export default function HeroSection() {
                   </svg>
                 </span>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: 'linear-gradient(135deg, #3b82f6, #d4af37)' }} />
-              </a>
+              </button>
 
-              <a
-                href="#contact"
+              <button
+                type="button"
+                onClick={() => onNavigate?.('contact')}
                 className="group inline-flex items-center justify-center gap-2 px-8 py-4 font-bold text-base rounded-xl border-2 hover-lift transition-all duration-300"
                 style={{ borderColor: '#d4af37', color: '#ffffff', background: 'rgba(212,175,55,0.1)' }}
                 onMouseEnter={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = '#d4af37';
-                  (e.currentTarget as HTMLAnchorElement).style.color = '#0a0f1e';
+                  (e.currentTarget as HTMLButtonElement).style.background = '#d4af37';
+                  (e.currentTarget as HTMLButtonElement).style.color = '#0a0f1e';
                 }}
                 onMouseLeave={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(212,175,55,0.1)';
-                  (e.currentTarget as HTMLAnchorElement).style.color = '#ffffff';
+                  (e.currentTarget as HTMLButtonElement).style.background = 'rgba(212,175,55,0.1)';
+                  (e.currentTarget as HTMLButtonElement).style.color = '#ffffff';
                 }}
               >
                 Get In Touch
                 <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
-              </a>
+              </button>
             </div>
 
             {/* Social Links */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <a
-                href="/resume.pdf"
-                download
-                className="group relative inline-flex items-center gap-2 px-5 h-12 rounded-xl border font-bold text-sm transition-all duration-300 hover-scale overflow-hidden"
-                style={{ borderColor: 'rgba(212,175,55,0.4)', background: 'rgba(212,175,55,0.1)', color: '#ffffff' }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = '#d4af37';
-                  (e.currentTarget as HTMLAnchorElement).style.color = '#0a0f1e';
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(212,175,55,0.1)';
-                  (e.currentTarget as HTMLAnchorElement).style.color = '#ffffff';
-                }}
-                aria-label="Download CV"
-              >
-                <svg className="w-5 h-5 relative z-10 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                </svg>
-                <span className="relative z-10">Download CV</span>
-              </a>
-
               <a href="https://github.com" target="_blank" rel="noopener noreferrer"
                 className="group relative w-12 h-12 flex items-center justify-center rounded-xl border transition-all duration-300 hover-scale overflow-hidden"
                 style={{ borderColor: 'rgba(59,130,246,0.4)', background: 'rgba(30,64,175,0.2)', color: '#ffffff' }}
@@ -208,12 +190,6 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 animate-bounce-smooth">
-        <p className="text-xs font-medium tracking-widest uppercase" style={{ color: '#d4af37', opacity: 0.7 }}>Scroll</p>
-        <div className="w-px h-8 rounded-full" style={{ background: 'linear-gradient(to bottom, #d4af37, transparent)' }} />
       </div>
     </section>
   );

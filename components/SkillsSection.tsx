@@ -10,7 +10,7 @@ export default function SkillsSection() {
 
   return (
     <section
-      className="relative py-24 px-6 overflow-hidden"
+      className="relative min-h-full py-24 px-6 overflow-hidden"
       style={{
         background: 'linear-gradient(180deg, #0a0f1e 0%, #0e1a35 50%, #0d1b3e 100%)',
         isolation: 'isolate',
