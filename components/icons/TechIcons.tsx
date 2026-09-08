@@ -1,59 +1,46 @@
 import type { ReactNode } from 'react';
-import {
-  siExpress,
-  siGithub,
-  siNextdotjs,
-  siSocketdotio,
-  siTypescript,
-  siJavascript,
-  siPython,
-  siPhp,
-  siReact,
-  siHtml5,
-  siCss,
-  siTailwindcss,
-  siNodedotjs,
-  siPostgresql,
-  siSupabase,
-  siMongodb,
-  siNeon,
-  siGit,
-  siPostman,
-  siVercel,
-} from 'simple-icons';
 import type { CategoryIconKey, SkillIconKey } from '@/lib/skills-data';
 
-const brandLogoPaths: Partial<Record<SkillIconKey, string>> = {
-  express: siExpress.path,
-  github: siGithub.path,
-  nextjs: siNextdotjs.path,
-  socketio: siSocketdotio.path,
-  typescript: siTypescript.path,
-  javascript: siJavascript.path,
-  python: siPython.path,
-  php: siPhp.path,
-  react: siReact.path,
-  reactnative: siReact.path,
-  html: siHtml5.path,
-  css: siCss.path,
-  tailwind: siTailwindcss.path,
-  nodejs: siNodedotjs.path,
-  postgresql: siPostgresql.path,
-  supabase: siSupabase.path,
-  mongodb: siMongodb.path,
-  neon: siNeon.path,
-  git: siGit.path,
-  postman: siPostman.path,
-  vercel: siVercel.path,
+const brandLogoSlugs: Partial<Record<SkillIconKey, string>> = {
+  typescript: 'typescript',
+  javascript: 'javascript',
+  python: 'python',
+  php: 'php',
+  react: 'react',
+  nextjs: 'nextjs',
+  reactnative: 'react',
+  html: 'html5',
+  css: 'css3',
+  tailwind: 'tailwindcss',
+  nodejs: 'nodedotjs',
+  express: 'express',
+  socketio: 'socket-io',
+  postgresql: 'postgresql',
+  supabase: 'supabase',
+  mongodb: 'mongodb',
+  neon: 'neon',
+  gemini: 'google-gemini',
+  git: 'git',
+  github: 'github',
+  postman: 'postman',
+  vercel: 'vercel',
 };
+
 function BrandLogo({ icon, name }: { icon: SkillIconKey; name: string }) {
-  const path = brandLogoPaths[icon];
-  if (!path) return null;
+  const slug = brandLogoSlugs[icon];
+  if (!slug) return null;
 
-  const image = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#ffffff" d="${path}"/></svg>`;
-  const src = `data:image/svg+xml,${encodeURIComponent(image)}`;
-
-  return <img src={src} alt="" className="h-4 w-4 shrink-0 object-contain" aria-hidden="true" title={`${name} logo`} />;
+  return (
+    <img
+      src={`https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/${slug}/default.svg`}
+      alt=""
+      className="h-4 w-4 shrink-0 object-contain"
+      loading="lazy"
+      decoding="async"
+      aria-hidden="true"
+      title={`${name} logo`}
+    />
+  );
 }
 
 function GenericIcon({ children }: { children: ReactNode }) {
@@ -75,7 +62,7 @@ function GenericIcon({ children }: { children: ReactNode }) {
 
 
 export function SkillIcon({ name, icon }: { name: string; icon: SkillIconKey }) {
-  if (brandLogoPaths[icon]) return <BrandLogo icon={icon} name={name} />;
+  if (brandLogoSlugs[icon]) return <BrandLogo icon={icon} name={name} />;
 
   if (icon === 'sql' || icon === 'vectordb') {
     return (
