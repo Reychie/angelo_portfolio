@@ -38,7 +38,7 @@ export default function ProfileFrame() {
         <div className="profile-frame-orbit profile-frame-orbit-one" />
         <div className="profile-frame-orbit profile-frame-orbit-two" />
         <div className="profile-frame-image-wrap">
-          <Image src="/profile-portrait.png" alt="Angelo Reychie Alejo" fill sizes="(max-width: 767px) 72vw, (max-width: 900px) 22rem, 27rem" className="profile-frame-image" priority />
+          <Image src="/profile-portrait.jpg" alt="Angelo Reychie Alejo" fill sizes="(max-width: 767px) 72vw, (max-width: 900px) 22rem, 27rem" className="profile-frame-image" priority />
           <div className="profile-frame-scan" aria-hidden="true" />
         </div>
         <div className="profile-frame-meta">
