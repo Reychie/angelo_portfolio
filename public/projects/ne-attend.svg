@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-label="NE-Attend dashboard">
+  <rect width="1200" height="750" fill="#07090f"/>
+  <rect x="0" y="0" width="220" height="750" fill="#0c1018"/>
+  <rect x="220" y="0" width="980" height="64" fill="#0c1018"/>
+  <text x="28" y="42" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">NE-Attend</text>
+  <rect x="28" y="90" width="164" height="36" rx="8" fill="#151b27"/>
+  <text x="48" y="113" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="13">Dashboard</text>
+  <rect x="28" y="136" width="164" height="36" rx="8" fill="#1a2233"/>
+  <text x="48" y="159" fill="#d4af37" font-family="Segoe UI, Arial, sans-serif" font-size="13">Live Session</text>
+  <rect x="28" y="182" width="164" height="36" rx="8" fill="#151b27"/>
+  <text x="48" y="205" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="13">Reports</text>
+  <text x="252" y="40" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="600">Real-Time Attendance</text>
+  <circle cx="1120" cy="32" r="6" fill="#22c55e"/>
+  <text x="1134" y="37" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="12">Live</text>
+  <rect x="252" y="96" width="280" height="120" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="276" y="136" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="13">Present</text>
+  <text x="276" y="178" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="700">128</text>
+  <rect x="552" y="96" width="280" height="120" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="576" y="136" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="13">Late</text>
+  <text x="576" y="178" fill="#d4af37" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="700">9</text>
+  <rect x="852" y="96" width="300" height="120" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="876" y="136" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="13">Absent</text>
+  <text x="876" y="178" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="700">14</text>
+  <rect x="252" y="244" width="900" height="450" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="276" y="286" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">Live Check-ins</text>
+  <rect x="276" y="310" width="852" height="1" fill="#1f2937"/>
+  <g font-family="Segoe UI, Arial, sans-serif" font-size="14">
+    <text x="292" y="350" fill="#9aa3b2">Name</text>
+    <text x="560" y="350" fill="#9aa3b2">Status</text>
+    <text x="760" y="350" fill="#9aa3b2">Time</text>
+    <text x="960" y="350" fill="#9aa3b2">Device</text>
+    <text x="292" y="400" fill="#e8eaed">M. Santos</text>
+    <text x="560" y="400" fill="#22c55e">Present</text>
+    <text x="760" y="400" fill="#e8eaed">07:58</text>
+    <text x="960" y="400" fill="#9aa3b2">Mobile</text>
+    <text x="292" y="450" fill="#e8eaed">J. Reyes</text>
+    <text x="560" y="450" fill="#22c55e">Present</text>
+    <text x="760" y="450" fill="#e8eaed">08:01</text>
+    <text x="960" y="450" fill="#9aa3b2">Web</text>
+    <text x="292" y="500" fill="#e8eaed">A. Cruz</text>
+    <text x="560" y="500" fill="#d4af37">Late</text>
+    <text x="760" y="500" fill="#e8eaed">08:17</text>
+    <text x="960" y="500" fill="#9aa3b2">Mobile</text>
+    <text x="292" y="550" fill="#e8eaed">L. Garcia</text>
+    <text x="560" y="550" fill="#22c55e">Present</text>
+    <text x="760" y="550" fill="#e8eaed">07:55</text>
+    <text x="960" y="550" fill="#9aa3b2">Web</text>
+    <text x="292" y="600" fill="#e8eaed">K. Lim</text>
+    <text x="560" y="600" fill="#93c5fd">Absent</text>
+    <text x="760" y="600" fill="#e8eaed"></text>
+    <text x="960" y="600" fill="#9aa3b2"></text>
+  </g>
+</svg>

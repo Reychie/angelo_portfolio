@@ -1,271 +1,61 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { site } from '@/lib/site';
 
 export default function ContactSection() {
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => {
-      setSubmitted(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 3000);
-  };
-
   return (
-    <section
-      className="relative min-h-full py-24 px-6 overflow-hidden"
-      style={{
-        background: 'linear-gradient(180deg, #060d1f 0%, #0a0f1e 60%, #0d1423 100%)',
-        isolation: 'isolate',
-      }}
-    >
-      {/* ═══ BACKGROUND LAYER ═══ */}
-      <div
-        aria-hidden="true"
-        style={{
-          position: 'absolute',
-          inset: 0,
-          zIndex: 0,
-          pointerEvents: 'none',
-          overflow: 'hidden',
-        }}
-      >
-        {/* Central radial glow */}
-        <div style={{
-          position: 'absolute',
-          top: '50%', left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '600px', height: '600px',
-          borderRadius: '9999px',
-          opacity: 0.08,
-          filter: 'blur(48px)',
-          background: 'radial-gradient(circle, rgba(30,64,175,0.3), transparent 70%)',
-        }} />
-        {/* Gold corner frames */}
-        {[
-          { top: '2rem', left: '2rem', borderTop: true, borderLeft: true },
-          { top: '2rem', right: '2rem', borderTop: true, borderRight: true },
-          { bottom: '2rem', left: '2rem', borderBottom: true, borderLeft: true },
-          { bottom: '2rem', right: '2rem', borderBottom: true, borderRight: true },
-        ].map((corner, i) => (
-          <div
-            key={i}
-            style={{
-              position: 'absolute',
-              top: corner.top,
-              left: corner.left,
-              right: corner.right,
-              bottom: corner.bottom,
-              width: '3rem',
-              height: '3rem',
-              borderTop: corner.borderTop ? '2px solid #d4af37' : undefined,
-              borderBottom: corner.borderBottom ? '2px solid #d4af37' : undefined,
-              borderLeft: corner.borderLeft ? '2px solid #d4af37' : undefined,
-              borderRight: corner.borderRight ? '2px solid #d4af37' : undefined,
-              borderRadius: corner.borderTop && corner.borderLeft ? '0.5rem 0 0 0'
-                : corner.borderTop && corner.borderRight ? '0 0.5rem 0 0'
-                : corner.borderBottom && corner.borderLeft ? '0 0 0 0.5rem'
-                : '0 0 0.5rem 0',
-              opacity: 0.2,
-            }}
-          />
-        ))}
-        {/* Animated concentric rings */}
-        {[200, 380, 560].map((size, i) => (
-          <div
-            key={i}
-            className="animate-pulse"
-            style={{
-              position: 'absolute',
-              top: '50%', left: '50%',
-              transform: 'translate(-50%, -50%)',
-              width: size, height: size,
-              borderRadius: '9999px',
-              border: `1px solid ${i % 2 === 0 ? '#d4af37' : '#3b82f6'}`,
-              opacity: 0.05,
-              animationDelay: `${i * 0.6}s`,
-              animationDuration: '3s',
-            }}
-          />
-        ))}
-      </div>
-
-      {/* ═══ CONTENT LAYER ═══ */}
-      <div
-        className="max-w-5xl mx-auto"
-        style={{ position: 'relative', zIndex: 1 }}
-      >
-        {/* Heading */}
-        <div className="text-center mb-16 animate-fadeInUp">
-          <p className="text-xs font-bold tracking-widest uppercase mb-3" style={{ color: '#d4af37' }}>Say Hello</p>
-          <h2 className="text-4xl md:text-5xl font-black text-white mb-4">
-            Let&apos;s <span style={{ color: '#d4af37' }}>Connect</span>
+    <section className="relative min-h-full px-6 md:px-10 lg:px-16 py-16 md:py-20">
+      <div className="max-w-2xl space-y-8">
+        <div className="space-y-3">
+          <p className="text-xs tracking-[0.28em] uppercase text-accent">Contact</p>
+          <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+            Let&apos;s talk about what you&apos;re building
           </h2>
-          <p className="text-base max-w-2xl mx-auto" style={{ color: '#ffffff' }}>
-            Have a project in mind or just want to say hello? Feel free to reach out!
+          <p className="text-base text-muted leading-relaxed">
+            For roles, collaborations, or technical discussions — reach out directly.
           </p>
-          <div className="flex items-center justify-center gap-3 mt-4">
-            <div className="h-px w-16" style={{ background: 'linear-gradient(90deg, transparent, #3b82f6)' }} />
-            <div className="w-2 h-2 rounded-full" style={{ background: '#d4af37' }} />
-            <div className="h-px w-16" style={{ background: 'linear-gradient(90deg, #3b82f6, transparent)' }} />
+        </div>
+
+        <div className="space-y-4 rounded-2xl border border-border bg-surface p-6">
+          <div>
+            <p className="text-[11px] tracking-[0.2em] uppercase text-muted mb-1">Email</p>
+            <a
+              href={`mailto:${site.email}`}
+              className="text-lg text-foreground hover:text-accent interactive-link"
+            >
+              {site.email}
+            </a>
+          </div>
+          <div>
+            <p className="text-[11px] tracking-[0.2em] uppercase text-muted mb-1">Location</p>
+            <p className="text-foreground">{site.location}</p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-10">
-          {/* Left — Form */}
-          <div className="animate-slideInLeft">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              {[
-                { id: 'name', label: 'Your Name', type: 'text', placeholder: 'Angelo Reychie' },
-                { id: 'email', label: 'Email Address', type: 'email', placeholder: 'hello@example.com' },
-              ].map((field) => (
-                <div key={field.id}>
-                  <label htmlFor={field.id} className="block text-sm font-semibold mb-2 text-white">
-                    {field.label}
-                  </label>
-                  <input
-                    type={field.type}
-                    id={field.id}
-                    name={field.id}
-                    value={formData[field.id as keyof typeof formData]}
-                    onChange={handleChange}
-                    required
-                    placeholder={field.placeholder}
-                    className="w-full px-4 py-3 rounded-xl border text-white text-sm font-medium placeholder-neutral-600 outline-none transition-all duration-300"
-                    style={{ background: 'rgba(30,64,175,0.1)', borderColor: 'rgba(59,130,246,0.3)', color: '#ffffff' }}
-                    onFocus={e => {
-                      e.currentTarget.style.borderColor = '#d4af37';
-                      e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,175,55,0.1)';
-                    }}
-                    onBlur={e => {
-                      e.currentTarget.style.borderColor = 'rgba(59,130,246,0.3)';
-                      e.currentTarget.style.boxShadow = 'none';
-                    }}
-                  />
-                </div>
-              ))}
-
-              <div>
-                <label htmlFor="message" className="block text-sm font-semibold mb-2 text-white">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleChange}
-                  required
-                  placeholder="Tell me about your project..."
-                  rows={5}
-                  className="w-full px-4 py-3 rounded-xl border text-sm font-medium placeholder-neutral-600 outline-none transition-all duration-300 resize-none"
-                  style={{ background: 'rgba(30,64,175,0.1)', borderColor: 'rgba(59,130,246,0.3)', color: '#ffffff' }}
-                  onFocus={e => {
-                    e.currentTarget.style.borderColor = '#d4af37';
-                    e.currentTarget.style.boxShadow = '0 0 0 3px rgba(212,175,55,0.1)';
-                  }}
-                  onBlur={e => {
-                    e.currentTarget.style.borderColor = 'rgba(59,130,246,0.3)';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                />
-              </div>
-
-              <button
-                type="submit"
-                className="w-full py-4 rounded-xl font-bold text-sm text-white hover-lift transition-all duration-300"
-                style={{ background: submitted ? 'linear-gradient(135deg, #16a34a, #22c55e)' : 'linear-gradient(135deg, #1e40af, #3b82f6)' }}
-              >
-                {submitted ? '✓ Message Sent!' : 'Send Message'}
-              </button>
-            </form>
-          </div>
-
-          {/* Right — Contact Info */}
-          <div className="animate-slideInRight space-y-5">
-            {[
-              {
-                icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />,
-                label: 'EMAIL', value: 'hello@angeloreychie.com', color: '#3b82f6',
-              },
-              {
-                icon: <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />,
-                label: 'PHONE', value: '+1 (555) 123-4567', color: '#d4af37',
-              },
-              {
-                icon: <><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></>,
-                label: 'LOCATION', value: 'San Francisco, USA', color: '#3b82f6',
-              },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="flex items-center gap-4 p-4 rounded-xl border hover-lift transition-all duration-300"
-                style={{ background: 'rgba(30,64,175,0.08)', borderColor: 'rgba(59,130,246,0.2)' }}
-              >
-                <div
-                  className="w-10 h-10 flex-shrink-0 flex items-center justify-center rounded-lg"
-                  style={{ background: `${item.color}20` }}
-                >
-                  <svg className="w-5 h-5" style={{ color: item.color }} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    {item.icon}
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-wide" style={{ color: '#ffffff' }}>
-                    {item.label}
-                  </p>
-                  <p className="text-sm font-medium text-white">{item.value}</p>
-                </div>
-              </div>
-            ))}
-
-            {/* Social links */}
-            <div className="pt-4 border-t" style={{ borderColor: 'rgba(59,130,246,0.15)' }}>
-              <p className="text-xs font-bold uppercase tracking-wide mb-4" style={{ color: '#ffffff' }}>
-                Follow Me
-              </p>
-              <div className="flex gap-3">
-                {[
-                  {
-                    label: 'GitHub', href: 'https://github.com',
-                    icon: <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.603-3.369-1.343-3.369-1.343-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.544 2.914 1.186.092-.923.35-1.544.636-1.9-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.578.688.48C19.138 20.195 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" clipRule="evenodd" />,
-                  },
-                  {
-                    label: 'Facebook', href: 'https://facebook.com',
-                    icon: <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />,
-                  },
-                  {
-                    label: 'LinkedIn', href: 'https://linkedin.com',
-                    icon: <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />,
-                  },
-                ].map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={s.label}
-                    className="group relative w-10 h-10 flex items-center justify-center rounded-lg border hover-scale transition-all duration-300 overflow-hidden"
-                    style={{ borderColor: 'rgba(59,130,246,0.3)', background: 'rgba(30,64,175,0.1)', color: '#ffffff' }}
-                  >
-                    <div
-                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity"
-                      style={{ background: 'linear-gradient(135deg, #1e40af, #d4af37)' }}
-                    />
-                    <svg className="w-4 h-4 relative" style={{ zIndex: 1 }} fill="currentColor" viewBox="0 0 24 24">
-                      {s.icon}
-                    </svg>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
+        <div className="flex flex-wrap gap-3">
+          <a
+            href={site.social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-5 py-2.5 rounded-full border border-border-strong text-sm font-semibold text-foreground hover:border-accent hover:text-accent interactive-link hover-scale"
+          >
+            GitHub ↗
+          </a>
+          <a
+            href={site.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center px-5 py-2.5 rounded-full border border-border-strong text-sm font-semibold text-foreground hover:border-accent hover:text-accent interactive-link hover-scale"
+          >
+            LinkedIn ↗
+          </a>
+          <a
+            href={site.resumePath}
+            download
+            className="inline-flex items-center px-5 py-2.5 rounded-full bg-accent text-[#0b0d12] text-sm font-semibold hover-scale"
+          >
+            Resume ↗
+          </a>
         </div>
       </div>
     </section>

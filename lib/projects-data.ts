@@ -1,62 +1,51 @@
 export interface Project {
-  id: number;
+  id: string;
   title: string;
   description: string;
-  icon: string;
+  role: string;
   technologies: string[];
-  link: string;
+  image: string;
+  imageAlt: string;
+  caseStudyUrl: string;
+  githubUrl: string;
+  liveUrl?: string;
 }
 
 export const projects: Project[] = [
   {
-    id: 1,
-    title: 'E-Commerce Platform',
-    description: 'Full-featured platform with payment integration, inventory management, and real-time notifications.',
-    icon: '🛍',
-    technologies: ['React', 'Node.js', 'MongoDB', 'Stripe'],
-    link: '#',
+    id: 'ne-attend',
+    title: 'NE-Attend',
+    description: 'Real-time attendance monitoring with live presence updates and admin dashboards.',
+    role: 'Full Stack Developer',
+    technologies: ['Next.js', 'Node.js', 'MongoDB', 'Socket.IO'],
+    image: '/projects/ne-attend.svg',
+    imageAlt: 'NE-Attend attendance dashboard screenshot',
+    caseStudyUrl: '#case-ne-attend',
+    githubUrl: 'https://github.com',
+    liveUrl: undefined,
   },
   {
-    id: 2,
-    title: 'Social Media Dashboard',
-    description: 'Analytics dashboard for multiple social accounts with real-time data visualization.',
-    icon: '📊',
-    technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Chart.js'],
-    link: '#',
+    id: 'orbit-desk',
+    title: 'Orbit Desk',
+    description: 'Operations console for tracking tickets, SLA timers, and team workload in one view.',
+    role: 'Full Stack Developer',
+    technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Redis'],
+    image: '/projects/orbit-desk.svg',
+    imageAlt: 'Orbit Desk operations console screenshot',
+    caseStudyUrl: '#case-orbit-desk',
+    githubUrl: 'https://github.com',
+    liveUrl: undefined,
   },
   {
-    id: 3,
-    title: 'Project Management Tool',
-    description: 'Collaborative tool with team features, task tracking, and reporting capabilities.',
-    icon: '📋',
-    technologies: ['React', 'Firebase', 'Tailwind CSS', 'Redux'],
-    link: '#',
-  },
-  {
-    id: 4,
-    title: 'AI Content Generator',
-    description: 'AI-powered platform using machine learning to create personalized content at scale.',
-    icon: '🤖',
-    technologies: ['Next.js', 'OpenAI API', 'Prisma', 'Stripe'],
-    link: '#',
-  },
-  {
-    id: 5,
-    title: 'Mobile Fitness App',
-    description: 'Cross-platform fitness tracking with workout plans, progress tracking, and community.',
-    icon: '💪',
-    technologies: ['React Native', 'Firebase', 'Redux', 'Google Fit'],
-    link: '#',
-  },
-  {
-    id: 6,
-    title: 'Learning Management System',
-    description: 'Comprehensive LMS for online courses with video streaming, quizzes, and progress.',
-    icon: '📚',
-    technologies: ['Next.js', 'Node.js', 'PostgreSQL', 'WebSocket'],
-    link: '#',
+    id: 'signal-board',
+    title: 'Signal Board',
+    description: 'Live metrics board for API health, deploy status, and incident awareness.',
+    role: 'Frontend Lead',
+    technologies: ['React', 'Node.js', 'WebSocket', 'Tailwind CSS'],
+    image: '/projects/signal-board.svg',
+    imageAlt: 'Signal Board metrics dashboard screenshot',
+    caseStudyUrl: '#case-signal-board',
+    githubUrl: 'https://github.com',
+    liveUrl: undefined,
   },
 ];
-
-/** Number of projects to show on the home page featured section */
-export const FEATURED_COUNT = 6;

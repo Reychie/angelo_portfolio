@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-label="Orbit Desk console">
+  <rect width="1200" height="750" fill="#07090f"/>
+  <rect x="0" y="0" width="1200" height="64" fill="#0c1018"/>
+  <text x="32" y="40" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Orbit Desk</text>
+  <rect x="180" y="20" width="320" height="28" rx="8" fill="#151b27"/>
+  <text x="196" y="39" fill="#6b7280" font-family="Segoe UI, Arial, sans-serif" font-size="12">Search tickets, owners, SLA&</text>
+  <rect x="32" y="96" width="360" height="620" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="56" y="136" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="15" font-weight="600">Queue</text>
+  <rect x="56" y="160" width="312" height="72" rx="10" fill="#151b27"/>
+  <text x="72" y="190" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="14">API latency spike</text>
+  <text x="72" y="214" fill="#d4af37" font-family="Segoe UI, Arial, sans-serif" font-size="12">SLA 00:42 remaining</text>
+  <rect x="56" y="248" width="312" height="72" rx="10" fill="#151b27"/>
+  <text x="72" y="278" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="14">Billing sync failed</text>
+  <text x="72" y="302" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="12">Assigned · Ops</text>
+  <rect x="56" y="336" width="312" height="72" rx="10" fill="#151b27"/>
+  <text x="72" y="366" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="14">New tenant onboarding</text>
+  <text x="72" y="390" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="12">Priority · Medium</text>
+  <rect x="416" y="96" width="752" height="300" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="448" y="140" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">Workload</text>
+  <rect x="448" y="170" width="40" height="160" rx="6" fill="#1e3a5f"/>
+  <rect x="520" y="210" width="40" height="120" rx="6" fill="#25406a"/>
+  <rect x="592" y="150" width="40" height="180" rx="6" fill="#d4af37"/>
+  <rect x="664" y="230" width="40" height="100" rx="6" fill="#1e3a5f"/>
+  <rect x="736" y="190" width="40" height="140" rx="6" fill="#25406a"/>
+  <rect x="808" y="160" width="40" height="170" rx="6" fill="#93c5fd"/>
+  <rect x="880" y="240" width="40" height="90" rx="6" fill="#1e3a5f"/>
+  <rect x="952" y="200" width="40" height="130" rx="6" fill="#25406a"/>
+  <rect x="416" y="420" width="752" height="296" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="448" y="464" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">Active Ticket</text>
+  <text x="448" y="510" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="14">Owner</text>
+  <text x="560" y="510" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="14">A. Reychie</text>
+  <text x="448" y="550" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="14">Status</text>
+  <text x="560" y="550" fill="#22c55e" font-family="Segoe UI, Arial, sans-serif" font-size="14">In Progress</text>
+  <text x="448" y="590" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="14">Impact</text>
+  <text x="560" y="590" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="14">Customer-facing API</text>
+  <rect x="448" y="620" width="160" height="40" rx="8" fill="#1a2233" stroke="#d4af37"/>
+  <text x="480" y="645" fill="#d4af37" font-family="Segoe UI, Arial, sans-serif" font-size="13">Update SLA</text>
+</svg>

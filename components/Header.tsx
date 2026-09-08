@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import type { Section } from '@/lib/types';
+import { site } from '@/lib/site';
 
 interface HeaderProps {
   activeSection: Section;
@@ -9,21 +10,38 @@ interface HeaderProps {
 }
 
 const navLinks: { id: Section; label: string }[] = [
-  { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
-  { id: 'skills', label: 'Skills' },
+  { id: 'work', label: 'Work' },
   { id: 'experience', label: 'Experience' },
-  { id: 'projects', label: 'Projects' },
+  { id: 'about', label: 'About' },
   { id: 'contact', label: 'Contact' },
 ];
 
+function GitHubIcon() {
+  return (
+    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path
+        fillRule="evenodd"
+        d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.868-.013-1.703-2.782.603-3.369-1.343-3.369-1.343-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.544 2.914 1.186.092-.923.35-1.544.636-1.9-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.578.688.48C19.138 20.195 22 16.44 22 12.017 22 6.484 17.522 2 12 2z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+function LinkedInIcon() {
+  return (
+    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z" />
+    </svg>
+  );
+}
+
 export default function Header({ activeSection, onSectionChange }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', isDark);
-  }, [isDark]);
+    document.documentElement.classList.add('dark');
+  }, []);
 
   const handleNavigate = (section: Section) => {
     onSectionChange(section);
@@ -31,52 +49,18 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
   };
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 h-20 backdrop-blur-xl shadow-sm transition-all duration-300"
-      style={{
-        background: 'rgba(6,13,31,0.85)',
-        borderBottom: '1px solid rgba(59,130,246,0.15)',
-      }}
-    >
-      <div className="h-full max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between gap-3">
-        {/* Logo + theme toggle */}
-        <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
-          <button
-            type="button"
-            onClick={() => handleNavigate('home')}
-            aria-label="Go to home"
-            className="w-10 h-10 flex items-center justify-center rounded-xl font-black text-sm hover-scale transition-all duration-300"
-            style={{ background: 'linear-gradient(135deg, #1e40af, #d4af37)', color: '#ffffff' }}
-          >
-            AA
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setIsDark((v) => !v)}
-            aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
-            aria-pressed={isDark}
-            className="hidden sm:flex w-10 h-10 items-center justify-center rounded-full border transition-all duration-300 hover-scale"
-            style={{ borderColor: 'rgba(59,130,246,0.3)', background: 'rgba(30,64,175,0.15)', color: '#ffffff' }}
-          >
-            {isDark ? (
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 1020.354 15.354z" />
-              </svg>
-            ) : (
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m8-9h1M3 12h1m14.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-              </svg>
-            )}
-          </button>
-        </div>
-
-        {/* Desktop pill navigation */}
-        <nav
-          className="hidden lg:flex items-center gap-1 rounded-full border p-1.5"
-          style={{ background: 'rgba(255,255,255,0.03)', borderColor: 'rgba(59,130,246,0.2)' }}
-          aria-label="Primary"
+    <header className="fixed top-0 left-0 right-0 z-50 h-16 md:h-20 border-b border-border bg-[rgba(5,7,11,0.72)] backdrop-blur-xl">
+      <div className="h-full max-w-7xl mx-auto px-4 md:px-8 flex items-center justify-between gap-4">
+        <button
+          type="button"
+          onClick={() => handleNavigate('home')}
+          className="text-sm md:text-base font-semibold tracking-[0.18em] text-foreground hover-scale"
+          aria-label="Go to home"
         >
+          {site.shortName}
+        </button>
+
+        <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
           {navLinks.map((link) => {
             const active = activeSection === link.id;
             return (
@@ -85,60 +69,54 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                 type="button"
                 onClick={() => handleNavigate(link.id)}
                 aria-current={active ? 'page' : undefined}
-                className="relative px-4 py-2 text-sm font-semibold rounded-full transition-all duration-300"
-                style={
-                  active
-                    ? { background: 'linear-gradient(135deg, #1e40af, #d4af37)', color: '#ffffff' }
-                    : { color: '#94a3b8', background: 'transparent' }
-                }
-                onMouseEnter={(e) => {
-                  if (!active) (e.currentTarget as HTMLButtonElement).style.color = '#ffffff';
-                }}
-                onMouseLeave={(e) => {
-                  if (!active) (e.currentTarget as HTMLButtonElement).style.color = '#94a3b8';
-                }}
+                className={`px-3 py-2 text-sm interactive-link ${
+                  active ? 'text-accent' : 'text-muted hover:text-foreground'
+                }`}
               >
                 {link.label}
               </button>
             );
           })}
+          <a
+            href={site.resumePath}
+            download
+            className="ml-2 px-3 py-2 text-sm text-muted hover:text-accent interactive-link"
+            aria-label="Download resume"
+          >
+            Resume ↗
+          </a>
         </nav>
 
-        {/* Download CV + mobile menu trigger */}
-        <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
+        <div className="flex items-center gap-2">
           <a
-            href="/resume.pdf"
-            download
-            className="group hidden sm:inline-flex items-center gap-2 px-4 md:px-5 h-10 md:h-11 rounded-full border font-bold text-xs md:text-sm transition-all duration-300 hover-scale"
-            style={{ borderColor: 'rgba(212,175,55,0.4)', background: 'rgba(212,175,55,0.1)', color: '#ffffff' }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = '#d4af37';
-              (e.currentTarget as HTMLAnchorElement).style.color = '#0a0f1e';
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(212,175,55,0.1)';
-              (e.currentTarget as HTMLAnchorElement).style.color = '#ffffff';
-            }}
-            aria-label="Download CV"
+            href={site.social.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+            className="w-10 h-10 inline-flex items-center justify-center rounded-full border border-border text-muted hover:text-foreground hover:border-border-strong interactive-link hover-scale"
           >
-            Download CV
-            <svg className="w-4 h-4 group-hover:translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-            </svg>
+            <GitHubIcon />
+          </a>
+          <a
+            href={site.social.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="w-10 h-10 inline-flex items-center justify-center rounded-full border border-border text-muted hover:text-foreground hover:border-border-strong interactive-link hover-scale"
+          >
+            <LinkedInIcon />
           </a>
 
-          {/* Mobile hamburger */}
           <div className="lg:hidden relative">
             <button
               type="button"
               onClick={() => setMenuOpen((v) => !v)}
               aria-label="Toggle navigation menu"
               aria-expanded={menuOpen}
-              className="w-10 h-10 flex items-center justify-center rounded-xl transition-colors"
-              style={{ color: '#ffffff' }}
+              className="w-10 h-10 inline-flex items-center justify-center rounded-full border border-border text-foreground"
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M4 7h16M4 12h16M4 17h16" />
               </svg>
             </button>
 
@@ -148,13 +126,9 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                   type="button"
                   aria-label="Close navigation menu"
                   onClick={() => setMenuOpen(false)}
-                  className="fixed inset-0 z-40 cursor-default"
-                  style={{ background: 'transparent' }}
+                  className="fixed inset-0 z-40"
                 />
-                <div
-                  className="absolute top-full right-0 mt-2 w-56 rounded-xl shadow-xl overflow-hidden z-50"
-                  style={{ background: 'rgba(6,13,31,0.97)', border: '1px solid rgba(59,130,246,0.2)' }}
-                >
+                <div className="absolute top-full right-0 mt-2 w-52 rounded-xl border border-border bg-[rgba(8,10,16,0.96)] shadow-2xl overflow-hidden z-50">
                   {navLinks.map((link) => {
                     const active = activeSection === link.id;
                     return (
@@ -163,27 +137,19 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
                         type="button"
                         onClick={() => handleNavigate(link.id)}
                         aria-current={active ? 'page' : undefined}
-                        className="w-full text-left block px-4 py-3 text-sm font-semibold transition-all duration-200"
-                        style={{
-                          color: active ? '#d4af37' : '#ffffff',
-                          borderLeft: active ? '2px solid #d4af37' : '2px solid transparent',
-                          background: active ? 'rgba(212,175,55,0.08)' : 'transparent',
-                        }}
+                        className="w-full text-left px-4 py-3 text-sm interactive-link"
+                        style={{ color: active ? 'var(--accent)' : 'var(--foreground)' }}
                       >
                         {link.label}
                       </button>
                     );
                   })}
                   <a
-                    href="/resume.pdf"
+                    href={site.resumePath}
                     download
-                    className="flex items-center gap-2 px-4 py-3 text-sm font-semibold border-t"
-                    style={{ color: '#d4af37', borderColor: 'rgba(59,130,246,0.15)' }}
+                    className="block px-4 py-3 text-sm border-t border-border text-accent"
                   >
-                    Download CV
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
-                    </svg>
+                    Resume ↗
                   </a>
                 </div>
               </>

@@ -1,11 +1,10 @@
+import { site } from '@/lib/site';
+
 export default function Footer() {
   return (
-    <footer
-      className="py-8 text-center border-t"
-      style={{ background: '#060d1f', borderColor: 'rgba(59,130,246,0.15)' }}
-    >
-      <p className="text-sm font-medium" style={{ color: '#ffffff' }}>
-        &copy; 2026 <span style={{ color: '#d4af37' }}>Angelo Reychie Alejo</span>. Crafted with care and code.
+    <footer className="py-8 px-6 border-t border-border">
+      <p className="text-center text-sm text-muted">
+        © {new Date().getFullYear()} <span className="text-accent">{site.name}</span>
       </p>
     </footer>
   );

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750" role="img" aria-label="Signal Board metrics">
+  <rect width="1200" height="750" fill="#07090f"/>
+  <rect x="0" y="0" width="1200" height="64" fill="#0c1018"/>
+  <text x="32" y="40" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="18" font-weight="700">Signal Board</text>
+  <circle cx="1080" cy="32" r="5" fill="#22c55e"/>
+  <text x="1094" y="37" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="12">All systems nominal</text>
+  <rect x="32" y="96" width="270" height="140" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="56" y="136" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="13">API Uptime</text>
+  <text x="56" y="184" fill="#22c55e" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">99.97%</text>
+  <rect x="322" y="96" width="270" height="140" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="346" y="136" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="13">p95 Latency</text>
+  <text x="346" y="184" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">184ms</text>
+  <rect x="612" y="96" width="270" height="140" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="636" y="136" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="13">Error Rate</text>
+  <text x="636" y="184" fill="#d4af37" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">0.08%</text>
+  <rect x="902" y="96" width="266" height="140" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="926" y="136" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="13">Deploys Today</text>
+  <text x="926" y="184" fill="#93c5fd" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">6</text>
+  <rect x="32" y="260" width="740" height="440" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="56" y="304" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">Request Volume</text>
+  <polyline fill="none" stroke="#93c5fd" stroke-width="3" points="80,620 140,580 200,590 260,520 320,540 380,470 440,490 500,430 560,450 620,390 680,410 740,360"/>
+  <polyline fill="none" stroke="#d4af37" stroke-width="2" opacity="0.7" points="80,640 140,630 200,635 260,610 320,615 380,590 440,595 500,570 560,575 620,550 680,555 740,530"/>
+  <rect x="796" y="260" width="372" height="440" rx="14" fill="#111827" stroke="#1f2937"/>
+  <text x="820" y="304" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="600">Incidents</text>
+  <rect x="820" y="330" width="324" height="70" rx="10" fill="#151b27"/>
+  <text x="840" y="360" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="14">CDN edge cache miss surge</text>
+  <text x="840" y="384" fill="#22c55e" font-family="Segoe UI, Arial, sans-serif" font-size="12">Resolved · 14m</text>
+  <rect x="820" y="420" width="324" height="70" rx="10" fill="#151b27"/>
+  <text x="840" y="450" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="14">Worker queue backlog</text>
+  <text x="840" y="474" fill="#d4af37" font-family="Segoe UI, Arial, sans-serif" font-size="12">Watching · 6m</text>
+  <rect x="820" y="510" width="324" height="70" rx="10" fill="#151b27"/>
+  <text x="840" y="540" fill="#e8eaed" font-family="Segoe UI, Arial, sans-serif" font-size="14">Auth provider degraded</text>
+  <text x="840" y="564" fill="#9aa3b2" font-family="Segoe UI, Arial, sans-serif" font-size="12">Closed · yesterday</text>
+</svg>
