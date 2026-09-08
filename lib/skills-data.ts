@@ -91,22 +91,6 @@ export const skillCategories: SkillCategoryData[] = [
     ],
   },
   {
-    id: 'ai',
-    title: 'AI & Machine Learning',
-    icon: 'spark',
-    skills: [
-      { name: 'Vector Databases', icon: 'vectordb' },
-      { name: 'OpenAI API', icon: 'openai' },
-      { name: 'Gemini API', icon: 'gemini' },
-    ],
-  },
-  {
-    id: 'security',
-    title: 'Security',
-    icon: 'shield',
-    skills: [{ name: 'Row-Level Security (RLS)', icon: 'rls' }],
-  },
-  {
     id: 'tools',
     title: 'Tools & Cloud',
     icon: 'tool',

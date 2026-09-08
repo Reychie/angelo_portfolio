@@ -279,6 +279,40 @@ html.has-custom-cursor * {
 .hero-social-link svg { width: 1rem; height: 1rem; }
 .hero-social-link:hover { color: var(--foreground); border-color: var(--border-strong); background: var(--accent-soft); transform: translateY(-2px); }
 
+.project-link-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 2.35rem;
+  padding: 0.5rem 0.8rem;
+  border: 1px solid rgba(155, 109, 255, 0.34);
+  border-radius: 0.7rem;
+  color: #e8ddff;
+  background: rgba(155, 109, 255, 0.1);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: transform var(--duration-interaction) var(--ease-interaction), color var(--duration-interaction) var(--ease-interaction), border-color var(--duration-interaction) var(--ease-interaction), background-color var(--duration-interaction) var(--ease-interaction), box-shadow var(--duration-interaction) var(--ease-interaction);
+}
+.project-link-button:hover { color: #fffaff; border-color: rgba(214, 196, 255, 0.72); background: rgba(155, 109, 255, 0.24); box-shadow: 0 8px 24px rgba(91, 45, 180, 0.22); transform: translateY(-2px); }
+.project-link-button:focus-visible { outline: 2px solid #d6c4ff; outline-offset: 3px; }
+
+.skill-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.35rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.65rem;
+  color: var(--foreground);
+  background: rgba(7, 6, 18, 0.72);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  transition: transform var(--duration-interaction) var(--ease-interaction), border-color var(--duration-interaction) var(--ease-interaction), background-color var(--duration-interaction) var(--ease-interaction), color var(--duration-interaction) var(--ease-interaction);
+}
+.skill-chip:hover { color: #fffaff; border-color: rgba(155, 109, 255, 0.56); background: rgba(155, 109, 255, 0.14); transform: translateY(-2px); }
+.skill-chip-icon { display: inline-flex; color: #9b6dff; }
+
 .profile-frame-wrap { display: grid; place-items: center; min-width: 0; }
 .profile-frame {
   position: relative;

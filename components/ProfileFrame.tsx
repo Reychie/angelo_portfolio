@@ -41,10 +41,6 @@ export default function ProfileFrame() {
           <Image src="/profile-portrait.jpg" alt="Angelo Reychie Alejo" fill sizes="(max-width: 767px) 72vw, (max-width: 900px) 22rem, 27rem" className="profile-frame-image" priority />
           <div className="profile-frame-scan" aria-hidden="true" />
         </div>
-        <div className="profile-frame-meta">
-          <span className="profile-frame-status"><span /> Available for selected work</span>
-          <span className="profile-frame-role">Full Stack Developer</span>
-        </div>
         <div className={`profile-frame-corner ${isFocused ? 'profile-frame-corner-active' : ''}`} aria-hidden="true" />
       </div>
     </div>

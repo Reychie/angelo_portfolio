@@ -47,9 +47,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted hover:text-violet interactive-link"
+            className="project-link-button"
+            aria-label={`Open ${project.title} GitHub repository`}
           >
-            GitHub ↗
+            <span>GitHub</span>
+            <span aria-hidden="true">↗</span>
           </a>
           {project.liveUrl ? (
             <a

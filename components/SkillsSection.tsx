@@ -8,7 +8,7 @@ export default function SkillsSection() {
         <div className="max-w-2xl space-y-3">
           <p className="text-xs tracking-[0.28em] uppercase text-violet">Skills</p>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
-            Technologies in practice
+            Technical Toolkit
           </h2>
           <p className="text-base text-muted leading-relaxed">
             A structured view of the languages, frameworks, and tools used to ship production work —
