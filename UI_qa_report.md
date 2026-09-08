@@ -1,67 +1,89 @@
-# UI QA Report — Developer in Orbit Redesign
+# UI QA Report — Developer in Orbit
 
 Date: 2026-09-08  
-Environment: `npm run dev` → http://localhost:3000  
-Method: Source inspection + headless Chromium CDP automation (`scripts/qa-browser.js`) + production `npm run build`
+Server: `npm run dev` → http://localhost:3000  
+Method: source inspection + headless Chromium CDP (`scripts/qa-browser.js`) + `npm run build` (prior)
 
-## Verdict summary
+## Verdict
 
-| Area | Status |
+The redesign architecture is implemented and working in the browser: persistent WebGL black hole, one motion system, simplified nav, evidence-style project cards, GitHub/LinkedIn/Resume still present.
+
+It is **not production-ready** until real screenshots, personal social/repo URLs, and a real resume PDF replace current placeholders.
+
+## Automated browser results
+
+| Check | Result |
 | --- | --- |
-| Architecture (persistent BH + section swap) | Implemented |
-| Motion system (3 layers) | Implemented |
-| Navigation restructure | Implemented |
-| Project card evidence layout | Implemented (assets are UI mockups, not photos) |
-| LinkedIn / GitHub / Resume | Functional |
-| Theme toggle | Removed (dark-only editorial) |
-| Console errors in QA run | None captured |
-| Production build | Pass |
+| Home load | H1 `Angelo Reychie Alejo`, Geist, `#05070b` |
+| Canvas | Present on every section |
+| Canvas after repeated nav | Still present (persistent) |
+| Skills tab | Absent |
+| Legacy anim classes | 0 |
+| Work / Experience / About / Contact | All navigate, `aria-current` correct, hashes update |
+| GitHub / LinkedIn header buttons | Present, `https://github.com` / `https://linkedin.com` |
+| Resume links | Present (`/resume.pdf`) |
+| Project cards | 3 cards with screenshot, title, role, stack, Case Study, GitHub |
+| Viewports 1440–375 | No horizontal overflow; canvas present |
+| Console errors (CDP) | None captured |
+| Browser warning (Next log) | `THREE.Clock` deprecated (R3F internal) |
 
-## Automated browser findings
+## Issues found
 
-- Canvas WebGL background present on Home and every nav section
-- Canvas remained present through repeated section switches (persistent mount)
-- Nav: Work / Experience / About / Contact / ANGELO brand home — all worked
-- Active states update correctly (`aria-current`)
-- Hash deep links: `/#work`, `/#experience`, `/#about`, `/#contact`
-- Legacy entrance classes (`animate-fadeInUp`, `animate-slideInLeft`, `animate-page-enter`) count: **0**
-- Typography: Geist applied
-- Background color: `rgb(5, 7, 11)` near-black
-- Mobile 390px: hamburger present, no horizontal overflow, canvas present
-- Project cards: 3 cards with screenshot, title, description, role, tech, Case Study + GitHub
+### 1 — Project GitHub / social URLs are generic
+**Observed:** Header GitHub/LinkedIn and card GitHub open site roots, not a profile or repo.  
+**Expected:** Personal profile and project repositories.  
+**Root cause:** `lib/site.ts` and `lib/projects-data.ts` still use the original placeholder URLs.  
+**File:** `lib/site.ts`, `lib/projects-data.ts`  
+**Priority:** High (content)
 
-## Remaining gaps before production-ready
+### 2 — Screenshots are SVG UI mockups
+**Observed:** Cards load `/projects/*.svg` product-UI illustrations.  
+**Expected:** Real application screenshots.  
+**Root cause:** Repo had no PNG/JPG project captures.  
+**File:** `public/projects/*`, `lib/projects-data.ts`  
+**Priority:** High (content)
 
-1. Replace SVG mock screenshots with real application screenshots
-2. Point GitHub / LinkedIn / project repos to personal profile URLs (currently root social URLs preserved)
-3. Add Live Demo URLs where demos exist
-4. Expand Case Study beyond in-page anchors into real write-ups
-5. Confirm Orbit Desk / Signal Board are real projects or replace with actual work
-6. Optional: silence Three.js Clock deprecation warning from R3F
+### 3 — Resume PDF is a stub
+**Observed:** `/resume.pdf` is served but extremely small.  
+**Expected:** Full CV.  
+**File:** `public/resume.pdf`  
+**Priority:** High (content)
 
-## Final evaluation answers
+### 4 — THREE.Clock deprecation
+**Observed:** `[browser] THREE.Clock: This module has been deprecated.`  
+**Expected:** No console noise.  
+**Root cause:** `@react-three/fiber` still constructs `THREE.Clock` on Three r185. Not from app shader code.  
+**File:** `components/BlackHoleBackground.tsx` (R3F `Canvas`)  
+**Priority:** Low
 
-1. Redesign fully implemented? **Mostly yes** — architecture, motion, nav, visual system done; content authenticity still partial
-2. Black-hole visual identity? **Yes** — WebGL shader, persistent, section-offset parallax
-3. Background persistent? **Yes**
-4. Section transitions smooth/consistent? **Yes** — single `sectionEnter` 420ms
-5. Timings/easing consistent? **Yes** — CSS variables
-6. Duplicate animations present? **No** (verified)
-7. UI/UX professional? **Yes, directionally** — recruiter-readable, restrained
-8. Still generic? **Much less** — still needs real screenshots/links to fully escape template feel
-9. Color system consistent? **Yes** — near-black + muted + gold accent
-10. Dark theme proper? **Yes** — dark-only
-11. Theme toggle? **Removed** (was incomplete; matches dark editorial brief)
+### 5 — No Live Demo links
+**Observed:** Cards omit Live Demo (by design when `liveUrl` is unset).  
+**Expected:** Live Demo when a deploy exists.  
+**Priority:** Medium (content)
+
+## Final evaluation
+
+1. Redesign fully implemented? **Mostly yes** (architecture/UI/motion yes; authentic assets no)
+2. Black-hole visual identity? **Yes** — persistent WebGL shader + gold/blue disk
+3. Background truly persistent? **Yes**
+4. Section transitions smooth/consistent? **Yes** — leave 180ms + enter 420ms, same easing
+5. Timings/easing consistent? **Yes** — CSS variables only
+6. Duplicate animations still present? **No**
+7. UI/UX professional for a developer portfolio? **Yes, directionally**
+8. Still looks generic? **Partially** — layout is editorial; content still placeholder-ish
+9. Color system consistent? **Yes** — near-black, muted, one gold accent
+10. Dark theme properly implemented? **Yes** — dark-only
+11. Theme toggle complete or incomplete? **Removed** (was incomplete; matches dark editorial brief)
 12. Interactive components functional? **Yes** in tested set
-13. LinkedIn/GitHub functional? **Yes** (generic destination URLs)
-14. Resume functional? **Yes** (`/resume.pdf` served)
-15. Project links functional? **Yes** (Case Study anchors + GitHub; no live demos configured)
-16. Project cards correct structure? **Yes**
-17. Responsive complete? **Good on 390 / desktop checks**; broader manual pass recommended at 768/1024/1440
-18. BH performance? **Configured for mobile DPR cap**; visual smoothness depends on GPU
-19. Accessibility issues? **Improved** (reduced-motion CSS + WebGL freeze; `maximumScale:1` removed). Custom cursor still desktop-only
-20. Console errors? **None in CDP capture**; Next may log Three Clock deprecation
-21. Broken links / missing assets? **No hard breaks**; social/project GitHub still placeholders
-22. Unfinished features? **Real photography, personal URLs, written case studies**
-23. Missed requirements? **No formal exit animation**; case studies are anchors not articles; screenshots are stylized mock UIs
-24. Fix before production? **Real assets + real URLs + confirm project authenticity**
+13. LinkedIn and GitHub still functional? **Yes** (generic destinations)
+14. Resume button functional? **Yes** (file is a stub)
+15. Project links functional? **GitHub yes; Live Demo not configured**
+16. Project cards implemented correctly? **Structure yes; evidence assets are mockups**
+17. Responsive implementation complete? **Yes on 1440, 1280, 1024, 768, 430, 390, 375** (no overflow)
+18. Black-hole animation perform well? **Configured correctly** (DPR cap, mobile quality drop); GPU-dependent
+19. Accessibility issues? **Reduced-motion supported** (CSS + frozen WebGL). Custom cursor hides native pointer on fine-pointer desktops
+20. Console errors/warnings? **No errors; Clock deprecation warning**
+21. Broken links / missing assets? **No 404s on tested routes; social/repo URLs are placeholders**
+22. Unfinished features? **Real photos, URLs, resume, live demos**
+23. Missed original requirements? **Case studies are inline expanders, not separate articles; screenshots are not photographs**
+24. Fix before production? **Replace mock screenshots, stub resume, and generic GitHub/LinkedIn/repo URLs with real ones**

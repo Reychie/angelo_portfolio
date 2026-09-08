@@ -7,10 +7,10 @@ export default function ExperienceSection() {
   const [expandedId, setExpandedId] = useState<string | null>(experiences[0]?.id ?? null);
 
   return (
-    <section className="relative min-h-full px-6 md:px-10 lg:px-16 py-16 md:py-20">
+    <section className="relative min-h-full px-6 md:px-10 lg:px-16 py-12 md:py-16">
       <div className="max-w-3xl mx-auto space-y-10">
         <div className="space-y-3">
-          <p className="text-xs tracking-[0.28em] uppercase text-accent">Experience</p>
+          <p className="text-xs tracking-[0.28em] uppercase text-violet">Experience</p>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
             Development experience
           </h2>
@@ -23,7 +23,7 @@ export default function ExperienceSection() {
           {experiences.map((exp) => {
             const open = expandedId === exp.id;
             return (
-              <div key={exp.id} className="rounded-2xl border border-border bg-surface overflow-hidden">
+              <div key={exp.id} className="rounded-2xl space-card overflow-hidden">
                 <button
                   type="button"
                   onClick={() => setExpandedId(open ? null : exp.id)}
@@ -33,7 +33,7 @@ export default function ExperienceSection() {
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-1 min-w-0">
                       <h3 className="text-lg font-semibold text-foreground">{exp.position}</h3>
-                      <p className="text-sm text-accent">{exp.company}</p>
+                      <p className="text-sm text-violet">{exp.company}</p>
                       <p className="text-xs text-muted">{exp.period}</p>
                     </div>
                     <span
@@ -51,7 +51,7 @@ export default function ExperienceSection() {
                     <ul className="space-y-2">
                       {exp.achievements.map((item) => (
                         <li key={item} className="text-sm text-foreground flex gap-2">
-                          <span className="text-accent mt-0.5">–</span>
+                          <span className="text-violet mt-0.5">–</span>
                           <span>{item}</span>
                         </li>
                       ))}

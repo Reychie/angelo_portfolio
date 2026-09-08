@@ -1,3 +1,6 @@
+'use client';
+
+import { useState } from 'react';
 import type { Project } from '@/lib/projects-data';
 
 interface ProjectCardProps {
@@ -5,9 +8,11 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const [open, setOpen] = useState(false);
+
   return (
-    <article className="group overflow-hidden rounded-2xl border border-border bg-surface hover-lift">
-      <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-[#0a0d14]">
+    <article id={`case-${project.id}`} className="group overflow-hidden rounded-2xl space-card hover-lift">
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-border bg-[#070711]">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={project.image}
@@ -30,14 +35,19 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         <p className="text-sm text-muted">{project.technologies.join(' • ')}</p>
 
         <div className="flex flex-wrap gap-x-4 gap-y-2 pt-1 text-sm">
-          <a href={project.caseStudyUrl} className="text-foreground hover:text-accent interactive-link">
-            Case Study
-          </a>
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            className="text-foreground hover:text-violet interactive-link"
+          >
+            {open ? 'Hide Case Study' : 'Case Study'}
+          </button>
           <a
             href={project.githubUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-muted hover:text-accent interactive-link"
+            className="text-muted hover:text-violet interactive-link"
           >
             GitHub ↗
           </a>
@@ -46,12 +56,29 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted hover:text-accent interactive-link"
+              className="text-muted hover:text-violet interactive-link"
             >
               Live Demo ↗
             </a>
           ) : null}
         </div>
+
+        {open && (
+          <div className="pt-3 border-t border-border space-y-3">
+            <div>
+              <p className="text-[11px] tracking-[0.2em] uppercase text-muted mb-1">Problem</p>
+              <p className="text-sm text-foreground leading-relaxed">{project.caseStudy.problem}</p>
+            </div>
+            <div>
+              <p className="text-[11px] tracking-[0.2em] uppercase text-muted mb-1">Approach</p>
+              <p className="text-sm text-foreground leading-relaxed">{project.caseStudy.approach}</p>
+            </div>
+            <div>
+              <p className="text-[11px] tracking-[0.2em] uppercase text-muted mb-1">Outcome</p>
+              <p className="text-sm text-foreground leading-relaxed">{project.caseStudy.outcome}</p>
+            </div>
+          </div>
+        )}
       </div>
     </article>
   );

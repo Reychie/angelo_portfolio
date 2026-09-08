@@ -37,10 +37,12 @@ export default function CustomCursor({ showCursor = true }: CustomCursorProps) {
     const onMove = (event: MouseEvent) => {
       pos.current.x = event.clientX;
       pos.current.y = event.clientY;
+      const target = event.target as HTMLElement | null;
+      const hovering = Boolean(target?.closest('a, button, [role="button"]'));
       if (frame.current == null) {
         frame.current = window.requestAnimationFrame(() => {
           if (cursorRef.current) {
-            cursorRef.current.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(-50%, -50%)`;
+            cursorRef.current.style.transform = `translate3d(${pos.current.x}px, ${pos.current.y}px, 0) translate(-50%, -50%) scale(${hovering ? 1.35 : 1})`;
             cursorRef.current.style.opacity = '1';
           }
           frame.current = null;
@@ -69,7 +71,7 @@ export default function CustomCursor({ showCursor = true }: CustomCursorProps) {
   return (
     <div
       ref={cursorRef}
-      className="fixed top-0 left-0 w-3 h-3 rounded-full border border-accent/80 pointer-events-none z-[60] opacity-0 mix-blend-difference"
+      className="fixed top-0 left-0 w-3 h-3 rounded-full border border-white/80 pointer-events-none z-[60] opacity-0 mix-blend-difference"
       aria-hidden="true"
     />
   );
