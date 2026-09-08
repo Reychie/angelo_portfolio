@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { experiences } from '@/lib/experience-data';
+import { ChevronDownIcon } from '@/components/icons/InterfaceIcons';
 
 export default function ExperienceSection() {
   const [expandedId, setExpandedId] = useState<string | null>(experiences[0]?.id ?? null);
@@ -28,7 +29,9 @@ export default function ExperienceSection() {
                   type="button"
                   onClick={() => setExpandedId(open ? null : exp.id)}
                   className="w-full text-left p-5 md:p-6 hover-lift"
+                  id={`experience-trigger-${exp.id}`}
                   aria-expanded={open}
+                  aria-controls={`experience-panel-${exp.id}`}
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div className="space-y-1 min-w-0">
@@ -37,16 +40,16 @@ export default function ExperienceSection() {
                       <p className="text-xs text-muted">{exp.period}</p>
                     </div>
                     <span
-                      className={`mt-1 text-muted transition-transform duration-[180ms] ${open ? 'rotate-180' : ''}`}
+                      className={`experience-toggle ${open ? 'experience-toggle-open' : ''}`}
                       aria-hidden="true"
                     >
-                      ▾
+                      <ChevronDownIcon className="h-4 w-4" />
                     </span>
                   </div>
                 </button>
 
                 {open && (
-                  <div className="px-5 md:px-6 pb-5 md:pb-6 space-y-4 border-t border-border">
+                  <div id={`experience-panel-${exp.id}`} role="region" aria-labelledby={`experience-trigger-${exp.id}`} className="px-5 md:px-6 pb-5 md:pb-6 space-y-4 border-t border-border">
                     <p className="pt-4 text-sm leading-relaxed text-muted">{exp.description}</p>
                     <ul className="space-y-2">
                       {exp.achievements.map((item) => (
