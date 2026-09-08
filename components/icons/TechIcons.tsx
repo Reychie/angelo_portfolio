@@ -7,19 +7,19 @@ const brandLogoSlugs: Partial<Record<SkillIconKey, string>> = {
   python: 'python',
   php: 'php',
   react: 'react',
-  nextjs: 'nextdotjs',
+  nextjs: 'nextjs',
   reactnative: 'react',
   html: 'html5',
   css: 'css3',
   tailwind: 'tailwindcss',
   nodejs: 'nodedotjs',
   express: 'express',
-  socketio: 'socketdotio',
+  socketio: 'socket-io',
   postgresql: 'postgresql',
   supabase: 'supabase',
   mongodb: 'mongodb',
   neon: 'neon',
-  gemini: 'googlegemini',
+  gemini: 'google-gemini',
   git: 'git',
   github: 'github',
   postman: 'postman',
@@ -32,7 +32,7 @@ function BrandLogo({ icon, name }: { icon: SkillIconKey; name: string }) {
 
   return (
     <img
-      src={`https://cdn.simpleicons.org/${slug}`}
+      src={`https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/${slug}/default.svg`}
       alt=""
       className="h-4 w-4 shrink-0 object-contain"
       loading="lazy"
