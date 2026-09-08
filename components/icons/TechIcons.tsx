@@ -1,35 +1,46 @@
 import type { ReactNode } from 'react';
-import type { SimpleIcon } from 'simple-icons';
-import {
-  siCss,
-  siExpress,
-  siGit,
-  siGithub,
-  siGooglegemini,
-  siHtml5,
-  siJavascript,
-  siMongodb,
-  siNeon,
-  siNextdotjs,
-  siNodedotjs,
-  siPhp,
-  siPostgresql,
-  siPostman,
-  siPython,
-  siReact,
-  siSocketdotio,
-  siSupabase,
-  siTailwindcss,
-  siTypescript,
-  siVercel,
-} from 'simple-icons';
 import type { CategoryIconKey, SkillIconKey } from '@/lib/skills-data';
 
-function BrandIcon({ icon }: { icon: SimpleIcon }) {
+const brandLogoSlugs: Partial<Record<SkillIconKey, string>> = {
+  typescript: 'typescript',
+  javascript: 'javascript',
+  python: 'python',
+  php: 'php',
+  react: 'react',
+  nextjs: 'nextjs',
+  reactnative: 'react',
+  html: 'html5',
+  css: 'css3',
+  tailwind: 'tailwindcss',
+  nodejs: 'nodedotjs',
+  express: 'nodejs',
+  socketio: 'socket-io',
+  postgresql: 'postgresql',
+  mysql: 'mysql',
+  supabase: 'supabase',
+  mongodb: 'mongodb',
+  gemini: 'google-gemini',
+  git: 'git',
+  github: 'github',
+  postman: 'postman',
+  vercel: 'vercel',
+};
+
+function BrandLogo({ icon, name }: { icon: SkillIconKey; name: string }) {
+  const slug = brandLogoSlugs[icon];
+  if (!slug) return null;
+  const variant = icon === 'github' ? 'light' : 'default';
+
   return (
-    <svg viewBox="0 0 24 24" className="w-4 h-4 shrink-0" fill="currentColor" aria-hidden="true">
-      <path d={icon.path} />
-    </svg>
+    <img
+      src={`https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/${slug}/${variant}.svg`}
+      alt=""
+      className="h-4 w-4 shrink-0 object-contain"
+      loading="lazy"
+      decoding="async"
+      aria-hidden="true"
+      title={`${name} logo`}
+    />
   );
 }
 
@@ -50,49 +61,16 @@ function GenericIcon({ children }: { children: ReactNode }) {
   );
 }
 
-const brands: Partial<Record<SkillIconKey, SimpleIcon>> = {
-  typescript: siTypescript,
-  javascript: siJavascript,
-  python: siPython,
-  php: siPhp,
-  react: siReact,
-  nextjs: siNextdotjs,
-  reactnative: siReact,
-  html: siHtml5,
-  css: siCss,
-  tailwind: siTailwindcss,
-  nodejs: siNodedotjs,
-  express: siExpress,
-  socketio: siSocketdotio,
-  postgresql: siPostgresql,
-  supabase: siSupabase,
-  mongodb: siMongodb,
-  neon: siNeon,
-  gemini: siGooglegemini,
-  git: siGit,
-  github: siGithub,
-  postman: siPostman,
-  vercel: siVercel,
-};
 
-export function SkillIcon({ icon }: { name: string; icon: SkillIconKey }) {
-  const brand = brands[icon];
-  if (brand) return <BrandIcon icon={brand} />;
+export function SkillIcon({ name, icon }: { name: string; icon: SkillIconKey }) {
+  if (brandLogoSlugs[icon]) return <BrandLogo icon={icon} name={name} />;
 
-  if (icon === 'sql' || icon === 'vectordb') {
+  if (icon === 'vectordb') {
     return (
       <GenericIcon>
         <ellipse cx="12" cy="6" rx="7" ry="3" />
         <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6" />
         <path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" />
-      </GenericIcon>
-    );
-  }
-
-  if (icon === 'rest') {
-    return (
-      <GenericIcon>
-        <path d="M4 8h16M4 16h16M8 4v16M16 4v16" />
       </GenericIcon>
     );
   }

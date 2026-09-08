@@ -11,7 +11,7 @@ interface AboutSectionProps {
 export default function AboutSection({ onNavigate }: AboutSectionProps) {
   return (
     <section className="relative min-h-full px-6 md:px-10 lg:px-16 py-12 md:py-16">
-      <div className="max-w-3xl space-y-8">
+      <div className="max-w-3xl mx-auto space-y-8 text-center">
         <div className="space-y-3">
           <p className="text-xs tracking-[0.28em] uppercase text-violet">About</p>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">

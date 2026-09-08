@@ -3,7 +3,24 @@
 import type { Section } from '@/lib/types';
 import { site } from '@/lib/site';
 import Button from '@/components/ui/Button';
-import SocialButton from '@/components/ui/SocialButton';
+import ProfileFrame from '@/components/ProfileFrame';
+import { ArrowUpRightIcon } from '@/components/icons/InterfaceIcons';
+import { GitHubIcon, LinkedInIcon } from '@/components/icons/SocialIcons';
+
+const socialLinks = [
+  { href: site.social.github, label: 'GitHub', icon: GitHubIcon },
+  { href: site.social.linkedin, label: 'LinkedIn', icon: LinkedInIcon },
+];
+
+function SocialLink({ href, label, icon: Icon }: { href: string; label: string; icon: typeof GitHubIcon }) {
+  return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="hero-social-link" aria-label={label}>
+      <Icon />
+      <span>{label}</span>
+      <ArrowUpRightIcon className="w-3.5 h-3.5" />
+    </a>
+  );
+} 
 
 interface HeroSectionProps {
   onNavigate?: (section: Section) => void;
@@ -12,8 +29,9 @@ interface HeroSectionProps {
 export default function HeroSection({ onNavigate }: HeroSectionProps) {
   return (
     <section className="relative min-h-full flex items-center px-6 md:px-10 lg:px-16 py-12 md:py-16">
-      <div className="w-full max-w-7xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto hero-grid">
         <div className="max-w-xl lg:max-w-2xl space-y-7">
+
           <p className="hero-badge">
             <span className="hero-badge-dot" />
             Developer in Orbit
@@ -37,11 +55,11 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
             </Button>
           </div>
 
-          <div className="flex items-center gap-2 pt-1">
-            <SocialButton platform="github" labeled />
-            <SocialButton platform="linkedin" labeled />
+          <div className="flex flex-wrap items-center gap-2 pt-1">
+            {socialLinks.map((link) => <SocialLink key={link.label} {...link} />)}
           </div>
         </div>
+        <ProfileFrame />
       </div>
     </section>
   );

@@ -2,7 +2,6 @@ export type SkillIconKey =
   | 'typescript'
   | 'javascript'
   | 'python'
-  | 'sql'
   | 'php'
   | 'react'
   | 'nextjs'
@@ -17,7 +16,7 @@ export type SkillIconKey =
   | 'postgresql'
   | 'supabase'
   | 'mongodb'
-  | 'neon'
+  | 'mysql'
   | 'vectordb'
   | 'openai'
   | 'gemini'
@@ -51,7 +50,6 @@ export const skillCategories: SkillCategoryData[] = [
       { name: 'TypeScript', icon: 'typescript' },
       { name: 'JavaScript', icon: 'javascript' },
       { name: 'Python', icon: 'python' },
-      { name: 'SQL', icon: 'sql' },
       { name: 'PHP', icon: 'php' },
     ],
   },
@@ -75,7 +73,6 @@ export const skillCategories: SkillCategoryData[] = [
     skills: [
       { name: 'Node.js', icon: 'nodejs' },
       { name: 'Express.js', icon: 'express' },
-      { name: 'RESTful APIs', icon: 'rest' },
       { name: 'Socket.IO', icon: 'socketio' },
     ],
   },
@@ -87,24 +84,8 @@ export const skillCategories: SkillCategoryData[] = [
       { name: 'PostgreSQL', icon: 'postgresql' },
       { name: 'Supabase', icon: 'supabase' },
       { name: 'MongoDB', icon: 'mongodb' },
-      { name: 'Neon', icon: 'neon' },
+      { name: 'MySQL', icon: 'mysql' },
     ],
-  },
-  {
-    id: 'ai',
-    title: 'AI & Machine Learning',
-    icon: 'spark',
-    skills: [
-      { name: 'Vector Databases', icon: 'vectordb' },
-      { name: 'OpenAI API', icon: 'openai' },
-      { name: 'Gemini API', icon: 'gemini' },
-    ],
-  },
-  {
-    id: 'security',
-    title: 'Security',
-    icon: 'shield',
-    skills: [{ name: 'Row-Level Security (RLS)', icon: 'rls' }],
   },
   {
     id: 'tools',

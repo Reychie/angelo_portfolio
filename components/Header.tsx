@@ -5,7 +5,6 @@ import type { Section } from '@/lib/types';
 import { NAV_LINKS } from '@/lib/types';
 import { site } from '@/lib/site';
 import NavigationItem from '@/components/ui/NavigationItem';
-import SocialButton from '@/components/ui/SocialButton';
 import OrbitMark from '@/components/icons/OrbitMark';
 
 interface HeaderProps {
@@ -43,10 +42,6 @@ export default function Header({ activeSection, onSectionChange }: HeaderProps) 
           </nav>
         </LayoutGroup>
 
-        <div className="header-social flex items-center gap-1.5 shrink-0">
-          <SocialButton platform="github" />
-          <SocialButton platform="linkedin" />
-        </div>
       </div>
     </header>
   );
