@@ -13,12 +13,12 @@ const brandLogoSlugs: Partial<Record<SkillIconKey, string>> = {
   css: 'css3',
   tailwind: 'tailwindcss',
   nodejs: 'nodedotjs',
-  express: 'express',
+  express: 'nodejs',
   socketio: 'socket-io',
   postgresql: 'postgresql',
+  mysql: 'mysql',
   supabase: 'supabase',
   mongodb: 'mongodb',
-  neon: 'neon',
   gemini: 'google-gemini',
   git: 'git',
   github: 'github',
@@ -29,10 +29,11 @@ const brandLogoSlugs: Partial<Record<SkillIconKey, string>> = {
 function BrandLogo({ icon, name }: { icon: SkillIconKey; name: string }) {
   const slug = brandLogoSlugs[icon];
   if (!slug) return null;
+  const variant = icon === 'github' ? 'light' : 'default';
 
   return (
     <img
-      src={`https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/${slug}/default.svg`}
+      src={`https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/${slug}/${variant}.svg`}
       alt=""
       className="h-4 w-4 shrink-0 object-contain"
       loading="lazy"
@@ -64,20 +65,12 @@ function GenericIcon({ children }: { children: ReactNode }) {
 export function SkillIcon({ name, icon }: { name: string; icon: SkillIconKey }) {
   if (brandLogoSlugs[icon]) return <BrandLogo icon={icon} name={name} />;
 
-  if (icon === 'sql' || icon === 'vectordb') {
+  if (icon === 'vectordb') {
     return (
       <GenericIcon>
         <ellipse cx="12" cy="6" rx="7" ry="3" />
         <path d="M5 6v6c0 1.7 3.1 3 7 3s7-1.3 7-3V6" />
         <path d="M5 12v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6" />
-      </GenericIcon>
-    );
-  }
-
-  if (icon === 'rest') {
-    return (
-      <GenericIcon>
-        <path d="M4 8h16M4 16h16M8 4v16M16 4v16" />
       </GenericIcon>
     );
   }
