@@ -24,6 +24,7 @@ export default function BlackHole({
   const desired = useRef(new THREE.Vector2(targetX, targetY));
   const qualityRef = useRef(quality);
   const motionRef = useRef(reducedMotion);
+  const timer = useMemo(() => new THREE.Timer(), []);
   const { size, gl, invalidate } = useThree();
 
   useEffect(() => {
@@ -47,7 +48,9 @@ export default function BlackHole({
 
   useEffect(() => {
     gl.setClearColor('#020205', 1);
-  }, [gl]);
+    timer.connect(document);
+    return () => timer.disconnect();
+  }, [gl, timer]);
 
   useEffect(() => {
     const onMove = (event: PointerEvent) => {
@@ -58,11 +61,12 @@ export default function BlackHole({
     return () => window.removeEventListener('pointermove', onMove);
   }, []);
 
-  useFrame((state) => {
+  useFrame(() => {
     const mat = material.current;
     if (!mat) return;
 
-    mat.uniforms.uTime.value = state.clock.elapsedTime;
+    timer.update();
+    mat.uniforms.uTime.value = timer.getElapsed();
     mat.uniforms.uResolution.value.set(size.width, size.height);
     mat.uniforms.uQuality.value = qualityRef.current;
     mat.uniforms.uMotion.value = motionRef.current ? 0 : 1;

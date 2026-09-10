@@ -51,8 +51,10 @@ void main() {
 
   float r = length(uv);
   vec2 dir = uv / max(r, 0.0001);
-  float bend = 0.058 / (r + 0.11);
+  float bend = 0.075 / (r + 0.085);
   vec2 luv = uv + dir * bend * mix(0.25, 1.0, uMotion);
+  float lens = exp(-pow((r - 0.19) * 9.0, 2.0));
+  luv += dir * lens * 0.018 * uMotion;
 
   float n = noise(luv * 2.35 + vec2(t * 0.32, -t * 0.2));
   if (uQuality > 0.45) {
@@ -98,12 +100,14 @@ void main() {
   float equator = 0.38 + 0.62 * exp(-pow(wuv.y * 11.2, 2.0));
   float ang = atan(wuv.y, wuv.x);
   float wave = sin(ang * 9.0 - t * 1.2 + dr * 18.0 + n * 3.1);
-  float doppler = 0.82 + 0.18 * clamp(wuv.x / max(dr, 0.001), -1.0, 1.0);
+  float dopplerSide = clamp(wuv.x / max(dr, 0.001), -1.0, 1.0);
+  float doppler = pow(0.72 + 0.28 * (dopplerSide * 0.5 + 0.5), 1.35);
+  float turbulence = 0.82 + 0.18 * sin(ang * 17.0 - t * 2.2 + n * 8.0);
 
   vec3 diskCol = mix(purple, violet, wave * 0.5 + 0.5);
   diskCol = mix(diskCol, innerDisk, disk * 0.52);
   diskCol = mix(diskCol, whiteHot, pow(disk, 1.35) * 0.48);
-  color += diskCol * disk * diskMask * equator * doppler * 1.55;
+  color += diskCol * disk * diskMask * equator * doppler * turbulence * 1.7;
 
   float outer = exp(-pow((dr - 0.39) * 8.2, 2.0)) * 0.42;
   color += mix(purpleDeep, blue, 0.38) * outer * equator;

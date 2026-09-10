@@ -11,7 +11,7 @@ export default function SkillCategory({ category }: { category: SkillCategoryDat
         </span>
         <h3 className="text-sm font-semibold tracking-[0.14em] uppercase text-violet">{category.title}</h3>
       </div>
-      <ul className={`flex gap-2.5 ${category.id === 'frontend' || category.id === 'backend' ? 'grid grid-cols-2 items-start' : 'flex-wrap'}`}>
+      <ul className="flex flex-wrap gap-2.5">
         {category.skills.map((skill) => (
           <SkillItem key={skill.name} skill={skill} />
         ))}
