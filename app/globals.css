@@ -312,7 +312,6 @@ html.has-custom-cursor * {
 }
 .skill-chip:hover { color: #fffaff; border-color: rgba(155, 109, 255, 0.56); background: rgba(155, 109, 255, 0.14); transform: translateY(-2px); }
 .skill-chip-icon { display: inline-flex; color: #9b6dff; }
-.skill-category-compact .skill-chip { width: fit-content; justify-self: start; }
 
 .profile-frame-wrap { display: grid; place-items: center; min-width: 0; }
 .profile-frame {
