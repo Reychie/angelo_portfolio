@@ -58,11 +58,11 @@ export const skillCategories: SkillCategoryData[] = [
     title: 'Frontend',
     icon: 'window',
     skills: [
+      { name: 'HTML', icon: 'html' },
+      { name: 'CSS', icon: 'css' },
       { name: 'React', icon: 'react' },
       { name: 'Next.js', icon: 'nextjs' },
       { name: 'React Native', icon: 'reactnative' },
-      { name: 'HTML', icon: 'html' },
-      { name: 'CSS', icon: 'css' },
       { name: 'Tailwind CSS', icon: 'tailwind' },
     ],
   },
