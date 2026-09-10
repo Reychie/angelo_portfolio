@@ -29,7 +29,7 @@ interface HeroSectionProps {
 export default function HeroSection({ onNavigate }: HeroSectionProps) {
   return (
     <section className="relative min-h-full flex items-center px-6 md:px-10 lg:px-16 py-12 md:py-16">
-      <div className="w-full max-w-7xl mx-auto hero-grid">
+      <div className="w-full max-w-[82rem] mx-auto hero-grid">
         <div className="max-w-xl lg:max-w-2xl space-y-7">
 
           <p className="hero-badge">
