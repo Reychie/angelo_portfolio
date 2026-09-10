@@ -95,10 +95,15 @@ export function SkillIcon({ name, icon }: { name: string; icon: SkillIconKey }) 
 
   if (icon === 'vscode') {
     return (
-      <GenericIcon>
-        <path d="M16 3l5 3v12l-5 3-7.5-6.5L4 16V8l4.5 1.5L16 3z" />
-        <path d="M8.5 9.5L4 8M8.5 14.5L4 16" />
-      </GenericIcon>
+      <img
+        src="/images/vscode-logo.png"
+        alt=""
+        className="h-4 w-4 shrink-0 object-contain"
+        loading="lazy"
+        decoding="async"
+        aria-hidden="true"
+        title={`${name} logo`}
+      />
     );
   }
 
