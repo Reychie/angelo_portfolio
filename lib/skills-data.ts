@@ -47,10 +47,10 @@ export const skillCategories: SkillCategoryData[] = [
     title: 'Programming Languages',
     icon: 'code',
     skills: [
+      { name: 'PHP', icon: 'php' },
       { name: 'TypeScript', icon: 'typescript' },
       { name: 'JavaScript', icon: 'javascript' },
       { name: 'Python', icon: 'python' },
-      { name: 'PHP', icon: 'php' },
     ],
   },
   {
@@ -58,11 +58,11 @@ export const skillCategories: SkillCategoryData[] = [
     title: 'Frontend',
     icon: 'window',
     skills: [
+      { name: 'HTML', icon: 'html' },
+      { name: 'CSS', icon: 'css' },
       { name: 'React', icon: 'react' },
       { name: 'Next.js', icon: 'nextjs' },
       { name: 'React Native', icon: 'reactnative' },
-      { name: 'HTML', icon: 'html' },
-      { name: 'CSS', icon: 'css' },
       { name: 'Tailwind CSS', icon: 'tailwind' },
     ],
   },
