@@ -356,18 +356,6 @@ html.has-custom-cursor * {
 .experience-status { width: fit-content; padding: 0.38rem 0.65rem; border: 1px solid rgba(118,229,177,0.25); border-radius: 999px; color: #76e5b1; background: rgba(118,229,177,0.08); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .experience-highlight { background: rgba(155,109,255,0.06); }
 
-.rocket-cursor { position: fixed; top: 0; left: 0; z-index: 60; width: 2rem; height: 2rem; pointer-events: none; opacity: 0; transform-origin: center; mix-blend-mode: screen; transition: opacity 120ms ease; }
-.rocket-cursor-icon { position: absolute; inset: 0.25rem; width: 1.5rem; height: 1.5rem; overflow: visible; fill: rgba(220,208,255,0.96); stroke: #9b6dff; stroke-width: 1.3; stroke-linecap: round; stroke-linejoin: round; filter: drop-shadow(0 0 7px rgba(155,109,255,0.75)); transform: rotate(45deg); }
-.rocket-cursor-flame { position: absolute; left: 0.7rem; bottom: -0.05rem; width: 0.45rem; height: 0.85rem; border-radius: 70% 30% 65% 35%; background: linear-gradient(180deg, #f5d77b, #ff8a5c 55%, transparent); transform: rotate(22deg); transform-origin: top center; opacity: 0.8; }
-.rocket-cursor-particle { position: absolute; width: 0.2rem; height: 0.2rem; border-radius: 999px; background: #9b6dff; opacity: 0; }
-.rocket-cursor-particle-one { left: 0.2rem; bottom: 0.15rem; }
-.rocket-cursor-particle-two { left: 0.1rem; bottom: 0.7rem; }
-.rocket-cursor-boosted { animation: rocket-boost 520ms cubic-bezier(0.2, 0.8, 0.2, 1); }
-.rocket-cursor-boosted .rocket-cursor-flame { animation: rocket-flame 520ms ease-out; }
-.rocket-cursor-boosted .rocket-cursor-particle { animation: rocket-particle 520ms ease-out; }
-@keyframes rocket-boost { 0% { margin-left: 0; transform: translateY(0) scale(1); } 25% { margin-left: 10px; transform: translateY(-2px) rotate(-4deg) scale(1.05); } 45% { margin-left: 15px; transform: translateY(2px) rotate(4deg) scale(1.08); } 100% { margin-left: 0; transform: translateY(0) scale(1); } }
-@keyframes rocket-flame { 0%, 100% { height: 0.85rem; opacity: 0.8; } 28% { height: 1.35rem; opacity: 1; } }
-@keyframes rocket-particle { 0%, 100% { opacity: 0; transform: translate(0, 0) scale(0.5); } 25% { opacity: 0.9; transform: translate(-7px, 4px) scale(1); } 70% { opacity: 0.35; transform: translate(-13px, 9px) scale(0.6); } }
 
 @media (max-width: 640px) {
   .experience-timeline { grid-template-columns: 0.75rem minmax(0, 1fr); gap: 0.75rem; }
