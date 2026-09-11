@@ -10,45 +10,26 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
-    id: 'ne-attend',
-    company: 'NE-Attend',
+    id: 'compassionate-home-health',
+    company: 'Compassionate Home Health Services',
     position: 'Full Stack Developer',
-    period: '2024 – Present',
+    period: 'Dec 2025 – Sep 2026',
     description:
-      'Designed and shipped a real-time attendance platform with live presence, role-based access, and operational dashboards.',
+      'Developed and improved healthcare applications across frontend and backend using TypeScript, Next.js, Node.js, Python, Supabase, and Vercel, including APIs, database features, access controls, workflow automation, third-party integrations, and dashboards. Implemented AI and machine learning capabilities for healthcare workflows, including intelligent assistants, clinical analysis, predictive functionality, data retrieval, and secure integrations between applications. Built AI-assisted development tools with isolated testing environments and real-time previews, while collaborating with developers and team members to fix issues and improve features.',
     achievements: [
-      'Built Socket.IO presence channels for live check-in status',
-      'Modeled MongoDB schemas for sessions, users, and audit history',
-      'Delivered responsive admin views for monitoring and reporting',
+      'Built healthcare workflows across frontend, backend, APIs, dashboards, and database features',
+      'Implemented AI-assisted clinical analysis, intelligent assistants, predictive functionality, and data retrieval',
+      'Created isolated testing environments and real-time previews for AI-assisted development tools',
     ],
-    technologies: ['Next.js', 'Node.js', 'MongoDB', 'Socket.IO'],
-  },
-  {
-    id: 'product-engineering',
-    company: 'Independent Product Work',
-    position: 'Full Stack Developer',
-    period: '2022 – 2024',
-    description:
-      'Built and maintained production web applications across dashboards, APIs, and client-facing interfaces.',
-    achievements: [
-      'Shipped multi-page Next.js apps with authenticated workflows',
-      'Implemented REST APIs and data models for operational tools',
-      'Improved UI consistency and accessibility across product surfaces',
-    ],
-    technologies: ['React', 'Next.js', 'TypeScript', 'PostgreSQL'],
-  },
-  {
-    id: 'frontend-foundation',
-    company: 'Client & Academic Projects',
-    position: 'Frontend Developer',
-    period: '2020 – 2022',
-    description:
-      'Focused on interface implementation, component systems, and integrating frontend clients with backend services.',
-    achievements: [
-      'Delivered responsive interfaces across desktop and mobile breakpoints',
-      'Collaborated on API contracts and form-heavy workflows',
-      'Established reusable UI patterns for faster iteration',
-    ],
-    technologies: ['React', 'JavaScript', 'CSS', 'Node.js'],
+    technologies: ['TypeScript', 'Next.js', 'Node.js', 'Python', 'Supabase', 'Vercel'],
   },
 ];
+
+export const technologyIcons = {
+  TypeScript: 'typescript',
+  'Next.js': 'nextjs',
+  'Node.js': 'nodejs',
+  Python: 'python',
+  Supabase: 'supabase',
+  Vercel: 'vercel',
+} as const;
