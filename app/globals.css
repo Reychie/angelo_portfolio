@@ -883,10 +883,6 @@ html.has-custom-cursor * {
     background-color var(--duration-interaction) var(--ease-interaction),
     box-shadow var(--duration-interaction) var(--ease-interaction);
 }
-a.contact-info-card {
-  text-decoration: none;
-  color: inherit;
-}
 .contact-info-card:hover {
   transform: translateY(-2px);
   border-color: rgba(155, 109, 255, 0.34);
@@ -902,9 +898,6 @@ a.contact-info-card {
 .contact-info-hint {
   color: var(--muted);
   font-size: 0.8rem;
-}
-.contact-info-card-email:hover .contact-info-hint {
-  color: #d6c4ff;
 }
 .contact-actions {
   position: relative;

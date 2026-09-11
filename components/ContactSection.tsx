@@ -2,6 +2,11 @@ import { site } from '@/lib/site';
 import Button from '@/components/ui/Button';
 import SocialButton from '@/components/ui/SocialButton';
 
+const gmailComposeUrl =
+  'https://mail.google.com/mail/?view=cm&fs=1' +
+  `&to=${encodeURIComponent(site.email)}` +
+  `&su=${encodeURIComponent('Portfolio Inquiry')}`;
+
 export default function ContactSection() {
   return (
     <section className="relative min-h-full px-6 md:px-10 lg:px-16 py-12 md:py-16">
@@ -26,11 +31,10 @@ export default function ContactSection() {
           </div>
 
           <div className="contact-card-grid">
-            <a href={`mailto:${site.email}`} className="contact-info-card contact-info-card-email">
+            <div className="contact-info-card">
               <p className="text-[11px] tracking-[0.2em] uppercase text-muted">Email</p>
               <p className="contact-info-value break-all">{site.email}</p>
-              <span className="contact-info-hint">Send a message ↗</span>
-            </a>
+            </div>
 
             <div className="contact-info-card">
               <p className="text-[11px] tracking-[0.2em] uppercase text-muted">Location</p>
@@ -40,7 +44,9 @@ export default function ContactSection() {
           </div>
 
           <div className="contact-actions">
-            <Button href={`mailto:${site.email}`}>Email Me</Button>
+            <Button href={gmailComposeUrl} external aria-label="Email Me via Gmail">
+              Email Me
+            </Button>
             <SocialButton platform="github" labeled />
             <SocialButton platform="linkedin" labeled />
             <Button href={site.resumePath} download variant="ghost">
