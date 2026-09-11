@@ -798,6 +798,11 @@ html.has-custom-cursor * {
   display: grid;
   gap: 0.85rem;
 }
+.about-signal-trail {
+  display: grid;
+  gap: 0.85rem;
+  align-content: start;
+}
 .about-signal-card {
   border-radius: 1rem;
   padding: 1rem 1.1rem;

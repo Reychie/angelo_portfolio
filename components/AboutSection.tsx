@@ -12,8 +12,12 @@ interface AboutSectionProps {
 const focusAreas = [
   { label: 'Focus', value: 'Full stack applications & production systems' },
   { label: 'Based in', value: site.location },
-  { label: 'Beyond code', value: 'Astronomy & space exploration' },
-];
+] as const;
+
+const beyondCode = {
+  label: 'Beyond code',
+  value: 'Astronomy & space exploration',
+} as const;
 
 export default function AboutSection({ onNavigate }: AboutSectionProps) {
   return (
@@ -39,22 +43,29 @@ export default function AboutSection({ onNavigate }: AboutSectionProps) {
               </p>
             </div>
 
-            <ul className="about-signal-grid" aria-label="About highlights">
+            <div className="about-signal-grid" aria-label="About highlights">
               {focusAreas.map((item) => (
-                <li key={item.label} className="about-signal-card space-card">
+                <div key={item.label} className="about-signal-card space-card">
                   <p className="text-[11px] tracking-[0.2em] uppercase text-muted">{item.label}</p>
                   <p className="mt-2 text-sm text-foreground leading-relaxed">{item.value}</p>
-                </li>
+                </div>
               ))}
-            </ul>
-          </div>
-        </div>
 
-        <div className="flex flex-wrap gap-3 pt-2">
-          <Button onClick={() => onNavigate?.('projects')}>View Projects</Button>
-          <Button onClick={() => onNavigate?.('skills')} variant="ghost">
-            View Skills
-          </Button>
+              <div className="about-signal-trail">
+                <div className="about-signal-card space-card">
+                  <p className="text-[11px] tracking-[0.2em] uppercase text-muted">{beyondCode.label}</p>
+                  <p className="mt-2 text-sm text-foreground leading-relaxed">{beyondCode.value}</p>
+                </div>
+
+                <div className="flex flex-wrap gap-3">
+                  <Button onClick={() => onNavigate?.('projects')}>View Projects</Button>
+                  <Button onClick={() => onNavigate?.('skills')} variant="ghost">
+                    View Skills
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
