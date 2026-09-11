@@ -3,6 +3,7 @@
 import type { Section } from '@/lib/types';
 import { site } from '@/lib/site';
 import Button from '@/components/ui/Button';
+import AboutProfileFrame from '@/components/AboutProfileFrame';
 
 interface AboutSectionProps {
   onNavigate?: (section: Section) => void;
@@ -23,12 +24,7 @@ export default function AboutSection({ onNavigate }: AboutSectionProps) {
         </div>
 
         <div className="about-composition">
-          <div className="about-orbit-panel" aria-hidden="true">
-            <span className="about-orbit about-orbit-a" />
-            <span className="about-orbit about-orbit-b" />
-            <span className="about-orbit-core" />
-            <span className="about-orbit-glow" />
-          </div>
+          <AboutProfileFrame />
 
           <div className="space-y-5">
             <div className="space-card rounded-2xl p-6 md:p-8 space-y-5 text-base md:text-lg leading-relaxed text-muted text-left">
