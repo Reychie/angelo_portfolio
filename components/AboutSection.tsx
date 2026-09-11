@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import type { Section } from '@/lib/types';
 import Button from '@/components/ui/Button';
 
@@ -9,29 +8,14 @@ interface AboutSectionProps {
 }
 
 export default function AboutSection({ onNavigate }: AboutSectionProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
-
   return (
     <section className="relative min-h-full px-6 md:px-10 lg:px-16 py-12 md:py-16">
-      <div className="max-w-3xl mr-auto space-y-8 text-left">
-        <div className="space-y-4">
+      <div className="max-w-3xl mx-auto space-y-8 text-center">
+        <div className="space-y-3">
           <p className="text-xs tracking-[0.28em] uppercase text-violet">About me</p>
-          <button
-            type="button"
-            className="rounded-full border border-border-strong bg-accent-soft px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-violet hover:bg-accent-soft"
-            aria-expanded={isExpanded}
-            aria-controls="about-me-content"
-            onClick={() => setIsExpanded((expanded) => !expanded)}
-          >
-            {isExpanded ? 'Hide About Me' : 'Read About Me'}
-          </button>
         </div>
 
-        <div
-          id="about-me-content"
-          hidden={!isExpanded}
-          className="space-card rounded-2xl p-6 md:p-8 space-y-5 text-base md:text-lg leading-relaxed text-muted text-left"
-        >
+        <div className="space-card rounded-2xl p-6 md:p-8 space-y-5 text-base md:text-lg leading-relaxed text-muted text-left">
           <p>
             I&apos;m Angelo Reychie Alejo, a Full Stack Developer who enjoys building applications and figuring out how different parts of a system work together. I like taking a requirement or problem, understanding what needs to be done, and turning it into a working feature.
           </p>
