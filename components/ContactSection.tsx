@@ -16,18 +16,18 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="space-y-4 rounded-2xl space-card p-6">
-          <div>
-            <p className="text-[11px] tracking-[0.2em] uppercase text-muted mb-1">Email</p>
+        <div className="grid gap-4 sm:grid-cols-2 rounded-2xl space-card p-6 text-left">
+          <div className="space-y-1">
+            <p className="text-[11px] tracking-[0.2em] uppercase text-muted">Email</p>
             <a
               href={`mailto:${site.email}`}
-              className="text-lg text-foreground hover:text-violet interactive-link"
+              className="text-lg text-foreground hover:text-violet interactive-link break-all"
             >
               {site.email}
             </a>
           </div>
-          <div>
-            <p className="text-[11px] tracking-[0.2em] uppercase text-muted mb-1">Location</p>
+          <div className="space-y-1">
+            <p className="text-[11px] tracking-[0.2em] uppercase text-muted">Location</p>
             <p className="text-foreground">{site.location}</p>
           </div>
         </div>
