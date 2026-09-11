@@ -34,7 +34,7 @@ export default function AboutProfileFrame() {
             src="/images/alejo_profile.jpg"
             alt="Angelo Reychie Alejo"
             fill
-            sizes="(max-width: 640px) 17rem, (max-width: 899px) 19rem, 22rem"
+            sizes="(max-width: 640px) 17rem, (max-width: 899px) 20rem, 26rem"
             quality={95}
             className={`about-profile-image about-profile-image-primary${revealed ? ' is-hidden' : ''}`}
             draggable={false}
@@ -44,7 +44,7 @@ export default function AboutProfileFrame() {
             src="/images/kevin_profile.jpg"
             alt=""
             fill
-            sizes="(max-width: 640px) 17rem, (max-width: 899px) 19rem, 22rem"
+            sizes="(max-width: 640px) 17rem, (max-width: 899px) 20rem, 26rem"
             quality={95}
             className={`about-profile-image about-profile-image-alt${revealed ? ' is-visible' : ''}`}
             draggable={false}

@@ -442,7 +442,7 @@ html.has-custom-cursor * {
 }
 .about-profile-frame {
   position: relative;
-  width: min(100%, 22rem);
+  width: min(100%, 26rem);
   aspect-ratio: 0.82;
   padding: 0.7rem;
   border: 1px solid rgba(155, 109, 255, 0.34);
@@ -679,14 +679,14 @@ a.contact-info-card {
 
 @media (min-width: 900px) {
   .about-composition {
-    grid-template-columns: minmax(12rem, 15rem) minmax(0, 1fr);
+    grid-template-columns: minmax(18rem, 20rem) minmax(0, 1fr);
     align-items: stretch;
     gap: 1.5rem;
   }
   .about-profile-frame {
     width: 100%;
     height: 100%;
-    min-height: 22rem;
+    min-height: 32rem;
     aspect-ratio: auto;
   }
   .about-signal-grid {
@@ -696,7 +696,7 @@ a.contact-info-card {
 
 @media (max-width: 899px) {
   .about-profile-wrap { justify-items: start; }
-  .about-profile-frame { width: min(100%, 14.5rem); }
+  .about-profile-frame { width: min(100%, 18rem); }
 }
 
 @media (max-width: 640px) {
