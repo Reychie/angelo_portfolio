@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import type { Project } from '@/lib/projects-data';
+import ProjectBrowserPreview from '@/components/ProjectBrowserPreview';
 
 interface ProjectCardProps {
   project: Project;
@@ -9,6 +10,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const [open, setOpen] = useState(false);
+  const liveUrl = project.liveUrl?.trim();
 
   return (
     <article id={`case-${project.id}`} className="group overflow-hidden rounded-2xl space-card hover-lift">
@@ -54,17 +56,20 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <span>GitHub</span>
             <span aria-hidden="true">↗</span>
           </a>
-          {project.liveUrl ? (
-            <a
-              href={project.liveUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="project-link-button"
-              aria-label={`View ${project.title} live project`}
-            >
-              <span>View Project</span>
-              <span aria-hidden="true">↗</span>
-            </a>
+          {liveUrl ? (
+            <>
+              <ProjectBrowserPreview title={project.title} url={liveUrl} triggerLabel="View Project" />
+              <a
+                href={liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-link-button"
+                aria-label={`Open ${project.title} live site in a new tab`}
+              >
+                <span>Open Live Site</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </>
           ) : (
             <span
               className="project-link-button project-link-button-disabled"
@@ -72,7 +77,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               title="Live project link coming soon"
             >
               <span>View Project</span>
-              <span aria-hidden="true">↗</span>
             </span>
           )}
         </div>

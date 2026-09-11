@@ -13,7 +13,7 @@ export default function SectionTransition({ sectionKey, children }: SectionTrans
   const reduce = useReducedMotion();
 
   return (
-    <div className="h-full w-full overflow-y-auto pt-28 md:pt-20">
+    <div className="portfolio-scroll-root h-full w-full overflow-y-auto pt-28 md:pt-20">
       <AnimatePresence mode="wait">
         <motion.div
           key={sectionKey}
