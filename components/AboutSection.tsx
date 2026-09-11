@@ -18,7 +18,7 @@ const focusAreas = [
 export default function AboutSection({ onNavigate }: AboutSectionProps) {
   return (
     <section className="relative min-h-full px-6 md:px-10 lg:px-16 py-12 md:py-16">
-      <div className="about-layout max-w-5xl mx-auto md:mr-auto md:ml-0 lg:ml-28 space-y-8">
+      <div className="max-w-6xl mx-auto space-y-8">
         <div className="space-y-3 max-w-2xl">
           <p className="text-xs tracking-[0.28em] uppercase text-violet">About me</p>
         </div>
