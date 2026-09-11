@@ -34,14 +34,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         <p className="text-sm text-muted">{project.technologies.join(' • ')}</p>
 
-        <div className="flex flex-wrap gap-x-4 gap-y-2 pt-1 text-sm">
+        <div className="flex flex-wrap gap-x-3 gap-y-2 pt-1 text-sm">
           <button
             type="button"
             onClick={() => setOpen((v) => !v)}
             aria-expanded={open}
-            className="text-foreground hover:text-violet interactive-link"
+            className={`project-link-button${open ? ' project-link-button-active' : ''}`}
           >
-            {open ? 'Hide Case Study' : 'Case Study'}
+            <span>{open ? 'Hide Case Study' : 'Case Study'}</span>
+            <span aria-hidden="true">{open ? '−' : '+'}</span>
           </button>
           <a
             href={project.githubUrl}
@@ -58,11 +59,22 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-muted hover:text-violet interactive-link"
+              className="project-link-button"
+              aria-label={`View ${project.title} live project`}
             >
-              Live Demo ↗
+              <span>View Project</span>
+              <span aria-hidden="true">↗</span>
             </a>
-          ) : null}
+          ) : (
+            <span
+              className="project-link-button project-link-button-disabled"
+              aria-disabled="true"
+              title="Live project link coming soon"
+            >
+              <span>View Project</span>
+              <span aria-hidden="true">↗</span>
+            </span>
+          )}
         </div>
 
         {open && (

@@ -8,10 +8,10 @@ export default function ProjectsSection() {
         <div className="max-w-2xl space-y-3">
           <p className="text-xs tracking-[0.28em] uppercase text-violet">Projects</p>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
-            Selected projects
+            Projects I’ve Built
           </h2>
           <p className="text-base text-muted leading-relaxed">
-            Evidence of shipped systems — role, stack, and links first.
+            A selection of systems and applications I’ve developed across professional, academic, and personal projects.
           </p>
         </div>
 

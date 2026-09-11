@@ -4,7 +4,7 @@ export const site = {
   role: 'Full Stack Developer',
   tagline:
     'I build applications, solve problems, and improve existing systems. I enjoy working on both the frontend and backend and turning project requirements into features that people can actually use.',
-  email: 'hello@angeloreychie.com',
+  email: 'alejo.angeloreychie@gmail.com',
   location: 'Philippines',
   resumePath: '/resume.pdf',
   social: {

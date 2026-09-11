@@ -295,6 +295,19 @@ html.has-custom-cursor * {
 }
 .project-link-button:hover { color: #fffaff; border-color: rgba(214, 196, 255, 0.72); background: rgba(155, 109, 255, 0.24); box-shadow: 0 8px 24px rgba(91, 45, 180, 0.22); transform: translateY(-2px); }
 .project-link-button:focus-visible { outline: 2px solid #d6c4ff; outline-offset: 3px; }
+.project-link-button-active {
+  color: #fffaff;
+  border-color: rgba(214, 196, 255, 0.72);
+  background: rgba(155, 109, 255, 0.24);
+  box-shadow: 0 8px 24px rgba(91, 45, 180, 0.22);
+}
+.project-link-button-disabled {
+  opacity: 0.48;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  transform: none;
+}
 
 .skill-chip {
   display: inline-flex;
@@ -353,13 +366,175 @@ html.has-custom-cursor * {
 .experience-timeline-dot { position: relative; z-index: 1; width: 0.75rem; height: 0.75rem; margin-top: 0.75rem; border: 2px solid #cbb8ff; border-radius: 999px; background: #6f3cf5; box-shadow: 0 0 0 5px rgba(155,109,255,0.14), 0 0 18px rgba(155,109,255,0.7); }
 .experience-entry { min-width: 0; transition: transform var(--duration-interaction) var(--ease-interaction), border-color var(--duration-interaction) var(--ease-interaction); }
 .experience-entry:hover { transform: translateY(-3px); border-color: rgba(155,109,255,0.35); }
+.experience-preview {
+  min-width: 0;
+  transition: transform var(--duration-interaction) var(--ease-interaction), border-color var(--duration-interaction) var(--ease-interaction);
+}
+.experience-preview:hover {
+  transform: translateY(-3px);
+  border-color: rgba(155, 109, 255, 0.35);
+}
 .experience-status { width: fit-content; padding: 0.38rem 0.65rem; border: 1px solid rgba(118,229,177,0.25); border-radius: 999px; color: #76e5b1; background: rgba(118,229,177,0.08); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
 .experience-highlight { background: rgba(155,109,255,0.06); }
 
+.experience-modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+.experience-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  cursor: pointer;
+  background:
+    radial-gradient(ellipse at center, rgba(20, 12, 48, 0.42), rgba(2, 2, 5, 0.78)),
+    rgba(2, 2, 5, 0.62);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+}
+.experience-modal-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 56rem);
+  max-height: min(88vh, 52rem);
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 0.85rem;
+  padding: 0.85rem;
+  border: 1px solid rgba(155, 109, 255, 0.28);
+  border-radius: 1.35rem;
+  background:
+    radial-gradient(120% 90% at 12% 0%, rgba(116, 60, 255, 0.16), transparent 48%),
+    rgba(7, 6, 18, 0.88);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48), 0 0 0 1px rgba(155, 109, 255, 0.08);
+  overflow: hidden;
+}
+.experience-modal-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.15rem 0.35rem 0.15rem 0.65rem;
+}
+.experience-modal-body {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding-bottom: 0.25rem;
+}
+.experience-modal-body .experience-entry:hover {
+  transform: none;
+}
+
+/* ========== ABOUT ========== */
+.about-composition {
+  position: relative;
+  display: grid;
+  gap: 1.25rem;
+}
+.about-orbit-panel {
+  position: relative;
+  display: none;
+  min-height: 12rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1.35rem;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(116, 60, 255, 0.18), transparent 42%),
+    linear-gradient(160deg, rgba(12, 10, 28, 0.72), rgba(7, 6, 18, 0.4));
+  overflow: hidden;
+  box-shadow: 0 20px 70px rgba(0, 0, 0, 0.28);
+}
+.about-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid rgba(155, 109, 255, 0.22);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-18deg);
+  pointer-events: none;
+}
+.about-orbit-a {
+  width: 78%;
+  height: 46%;
+  animation: about-orbit-drift 14s ease-in-out infinite;
+}
+.about-orbit-b {
+  width: 58%;
+  height: 68%;
+  border-color: rgba(73, 124, 255, 0.18);
+  transform: translate(-50%, -50%) rotate(24deg);
+  animation: about-orbit-drift 18s ease-in-out infinite reverse;
+}
+.about-orbit-core {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 0.85rem;
+  height: 0.85rem;
+  border-radius: 999px;
+  transform: translate(-50%, -50%);
+  background: #6f3cf5;
+  border: 2px solid #cbb8ff;
+  box-shadow: 0 0 0 5px rgba(155, 109, 255, 0.14), 0 0 22px rgba(155, 109, 255, 0.7);
+}
+.about-orbit-glow {
+  position: absolute;
+  inset: 18%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(155, 109, 255, 0.18), transparent 70%);
+  filter: blur(8px);
+  pointer-events: none;
+}
+.about-signal-grid {
+  display: grid;
+  gap: 0.85rem;
+}
+.about-signal-card {
+  border-radius: 1rem;
+  padding: 1rem 1.1rem;
+  transition: transform var(--duration-interaction) var(--ease-interaction), border-color var(--duration-interaction) var(--ease-interaction);
+}
+.about-signal-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(155, 109, 255, 0.32);
+}
+
+@keyframes about-orbit-drift {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@media (min-width: 900px) {
+  .about-composition {
+    grid-template-columns: minmax(10rem, 14rem) minmax(0, 1fr);
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+  .about-orbit-panel {
+    display: block;
+    min-height: 100%;
+  }
+  .about-signal-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 
 @media (max-width: 640px) {
   .experience-timeline { grid-template-columns: 0.75rem minmax(0, 1fr); gap: 0.75rem; }
   .experience-status { align-self: flex-start; }
+  .experience-modal-root { padding: 0.75rem; align-items: end; }
+  .experience-modal-panel {
+    width: 100%;
+    max-height: 92vh;
+    border-radius: 1.15rem 1.15rem 0.85rem 0.85rem;
+  }
+  .experience-modal-toolbar .btn-ghost {
+    min-height: 2.4rem;
+    padding: 0.55rem 1rem;
+  }
 }
 
 /* ========== BUTTONS ========== */

@@ -1,13 +1,35 @@
 'use client';
 
-import { experiences, technologyIcons } from '@/lib/experience-data';
-import { SkillIcon } from '@/components/icons/TechIcons';
-import type { SkillIconKey } from '@/lib/skills-data';
+import { useEffect, useId, useState } from 'react';
+import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
+import { experiences } from '@/lib/experience-data';
+import type { Experience } from '@/lib/experience-data';
+import { EASE_OUT, interaction, sectionEnter } from '@/lib/motion';
+import ExperienceDetail from '@/components/ExperienceDetail';
+import Button from '@/components/ui/Button';
 
 export default function ExperienceSection() {
-  const experience = experiences[0];
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const reduce = useReducedMotion();
+  const titleId = useId();
+  const active = experiences.find((item) => item.id === activeId) ?? null;
 
-  if (!experience) return null;
+  useEffect(() => {
+    if (!activeId) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setActiveId(null);
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, [activeId]);
 
   return (
     <section className="relative min-h-full px-6 md:px-10 lg:px-16 py-12 md:py-16">
@@ -18,53 +40,89 @@ export default function ExperienceSection() {
             A practical path through production work
           </h2>
           <p className="text-base text-muted leading-relaxed">
-            One focused timeline of the systems, teams, and technologies behind my recent work.
+            My professional experience, including the roles, projects, and responsibilities I’ve worked on.
           </p>
         </div>
 
-        <div className="experience-timeline">
-          <div className="experience-timeline-rail" aria-hidden="true">
-            <span className="experience-timeline-dot" />
-          </div>
-          <article className="experience-entry space-card rounded-2xl p-6 md:p-8">
-            <div className="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
-              <div>
-                <p className="text-xs tracking-[0.2em] uppercase text-violet">{experience.period}</p>
-                <h3 className="mt-2 text-2xl font-semibold text-foreground">{experience.position}</h3>
-                <p className="mt-1 text-sm text-muted">{experience.company} · Pontiac, Michigan, USA</p>
-              </div>
-              <span className="experience-status">Recent role</span>
-            </div>
-
-            <p className="mt-6 text-sm md:text-base leading-relaxed text-muted">{experience.description}</p>
-
-            <div className="mt-7 grid gap-3 md:grid-cols-3">
-              {experience.achievements.map((item) => (
-                <div key={item} className="experience-highlight rounded-xl border border-border p-4 text-sm leading-relaxed text-foreground">
-                  {item}
-                </div>
-              ))}
-            </div>
-
-            <div className="mt-8 border-t border-border pt-5">
-              <p className="text-[11px] tracking-[0.2em] uppercase text-muted">Technology stack</p>
-              <ul className="mt-3 flex flex-wrap gap-2.5" aria-label="Technologies used">
-                {experience.technologies.map((technology) => {
-                  const icon = technologyIcons[technology as keyof typeof technologyIcons] as SkillIconKey;
-                  return (
-                    <li key={technology} className="skill-chip">
-                      <span className="skill-chip-icon" aria-hidden="true">
-                        <SkillIcon name={technology} icon={icon} />
-                      </span>
-                      <span>{technology}</span>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          </article>
+        <div className="space-y-5">
+          {experiences.map((experience) => (
+            <ExperiencePreview
+              key={experience.id}
+              experience={experience}
+              onOpen={() => setActiveId(experience.id)}
+            />
+          ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {active ? (
+          <motion.div
+            className="experience-modal-root"
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={reduce ? undefined : { opacity: 0, transition: { duration: 0.18, ease: EASE_OUT } }}
+            transition={sectionEnter}
+          >
+            <button
+              type="button"
+              className="experience-modal-backdrop"
+              aria-label="Close experience details"
+              onClick={() => setActiveId(null)}
+            />
+            <motion.div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby={titleId}
+              className="experience-modal-panel"
+              initial={reduce ? false : { opacity: 0, y: 18, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={reduce ? undefined : { opacity: 0, y: 10, scale: 0.98, transition: interaction }}
+              transition={{ duration: 0.32, ease: EASE_OUT }}
+            >
+              <div className="experience-modal-toolbar">
+                <p id={titleId} className="text-sm text-muted">
+                  Role details
+                </p>
+                <Button type="button" variant="ghost" onClick={() => setActiveId(null)}>
+                  Close
+                </Button>
+              </div>
+              <div className="experience-modal-body">
+                <ExperienceDetail experience={active} className="experience-entry space-card rounded-2xl p-6 md:p-8" />
+              </div>
+            </motion.div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
     </section>
+  );
+}
+
+function ExperiencePreview({
+  experience,
+  onOpen,
+}: {
+  experience: Experience;
+  onOpen: () => void;
+}) {
+  return (
+    <div className="experience-timeline">
+      <div className="experience-timeline-rail" aria-hidden="true">
+        <span className="experience-timeline-dot" />
+      </div>
+      <article className="experience-preview space-card rounded-2xl p-5 md:p-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+          <div className="min-w-0 space-y-1.5">
+            <p className="text-xs tracking-[0.2em] uppercase text-violet">{experience.period}</p>
+            <h3 className="text-xl md:text-2xl font-semibold text-foreground">{experience.position}</h3>
+            <p className="text-sm text-muted">{experience.company}</p>
+          </div>
+          <Button type="button" variant="ghost" className="shrink-0 self-start sm:self-center" onClick={onOpen}>
+            View details
+          </Button>
+        </div>
+      </article>
+    </div>
   );
 }

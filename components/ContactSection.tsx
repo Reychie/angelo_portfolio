@@ -9,10 +9,10 @@ export default function ContactSection() {
         <div className="space-y-3">
           <p className="text-xs tracking-[0.28em] uppercase text-violet">Contact</p>
           <h2 className="text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
-            Let&apos;s talk about what you&apos;re building
+            Open to new opportunities
           </h2>
           <p className="text-base text-muted leading-relaxed">
-            For roles, collaborations, or technical discussions — reach out directly.
+            I’m available for professional opportunities, projects, collaborations, and other development work.
           </p>
         </div>
 
