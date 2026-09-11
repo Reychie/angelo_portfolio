@@ -442,7 +442,7 @@ html.has-custom-cursor * {
 }
 .about-profile-frame {
   position: relative;
-  width: min(100%, 16rem);
+  width: min(100%, 22rem);
   aspect-ratio: 0.82;
   padding: 0.7rem;
   border: 1px solid rgba(155, 109, 255, 0.34);
