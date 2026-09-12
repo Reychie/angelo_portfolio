@@ -50,7 +50,7 @@ export default function ContactSection() {
             <SocialButton platform="github" labeled />
             <SocialButton platform="linkedin" labeled />
             <Button href={site.resumePath} download variant="ghost">
-              Resume
+              View Resume
             </Button>
           </div>
         </div>

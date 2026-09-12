@@ -51,7 +51,7 @@ export default function HeroSection({ onNavigate }: HeroSectionProps) {
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Button onClick={() => onNavigate?.('projects')}>View Projects</Button>
             <Button href={site.resumePath} download variant="ghost">
-              Download Resume
+              View Resume
             </Button>
           </div>
 

@@ -3,12 +3,15 @@ export type SkillIconKey =
   | 'javascript'
   | 'python'
   | 'php'
+  | 'cpp'
+  | 'java'
   | 'react'
   | 'nextjs'
   | 'reactnative'
   | 'html'
   | 'css'
   | 'tailwind'
+  | 'vite'
   | 'nodejs'
   | 'express'
   | 'rest'
@@ -51,6 +54,8 @@ export const skillCategories: SkillCategoryData[] = [
       { name: 'JavaScript', icon: 'javascript' },
       { name: 'Python', icon: 'python' },
       { name: 'PHP', icon: 'php' },
+      { name: 'C++', icon: 'cpp' },
+      { name: 'Java', icon: 'java' },
     ],
   },
   {
@@ -64,6 +69,7 @@ export const skillCategories: SkillCategoryData[] = [
       { name: 'Next.js', icon: 'nextjs' },
       { name: 'React Native', icon: 'reactnative' },
       { name: 'Tailwind CSS', icon: 'tailwind' },
+      { name: 'Vite', icon: 'vite' },
     ],
   },
   {

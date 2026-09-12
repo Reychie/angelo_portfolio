@@ -26,6 +26,13 @@ const brandLogoSlugs: Partial<Record<SkillIconKey, string>> = {
   vercel: 'vercel',
 };
 
+const localLogos: Partial<Record<SkillIconKey, string>> = {
+  cpp: '/images/cpp-logo.png',
+  java: '/images/java-logo.png',
+  vite: '/images/vite-logo.png',
+  vscode: '/images/vscode-logo.png',
+};
+
 function BrandLogo({ icon, name }: { icon: SkillIconKey; name: string }) {
   const slug = brandLogoSlugs[icon];
   if (!slug) return null;
@@ -93,10 +100,11 @@ export function SkillIcon({ name, icon }: { name: string; icon: SkillIconKey }) 
     );
   }
 
-  if (icon === 'vscode') {
+  const localSrc = localLogos[icon];
+  if (localSrc) {
     return (
       <img
-        src="/images/vscode-logo.png"
+        src={localSrc}
         alt=""
         className="h-4 w-4 shrink-0 object-contain"
         loading="lazy"
